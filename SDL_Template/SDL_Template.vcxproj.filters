@@ -43,6 +43,9 @@
     <Filter Include="Source Files\Game">
       <UniqueIdentifier>{b114a4f8-cc47-44ef-825e-63eac87c9f0c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{708d1454-f3ae-40cd-a967-81ae0f46ce38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -218,5 +221,13 @@
     <ClInclude Include="tinyxml2.h">
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Assets\Shaders\fs.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\Assets\Shaders\vs.shader">
+      <Filter>Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>
