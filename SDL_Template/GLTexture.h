@@ -19,9 +19,9 @@ namespace SDLFramework {
 	
 		SDL_Surface* Surface;
 
-		GLTexture(std::string filename, bool managed = false);
-		GLTexture(std::string filename, int x, int y, int w, int h, bool managed = false);
-		GLTexture(std::string text, std::string fontPath, int size, SDL_Color color, bool managed = false);
+		GLTexture(std::string filename, bool managed = true);
+		GLTexture(std::string filename, int x, int y, int w, int h, bool managed = true);
+		GLTexture(std::string text, std::string fontPath, int size, SDL_Color color, bool managed = true);
 		virtual ~GLTexture();
 
 		void Generate();
