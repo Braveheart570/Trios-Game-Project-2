@@ -15,7 +15,8 @@ private:
 
 	GLTexture* mSky[3];
 	GLTexture* mMoon;
-	GLTexture* mMountains[4];
+	static const int sMountainPannels = 5;
+	GLTexture* mMountains[sMountainPannels];
 	GLTexture* mTitle;
 
 
