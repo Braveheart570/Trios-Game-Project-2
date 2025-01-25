@@ -3,6 +3,7 @@
 #include "AnimatedGLTexture.h"
 #include "InputManager.h"
 #include "Scoreboard.h"
+#include "AudioManager.h"
 
 using namespace SDLFramework;
 
@@ -12,6 +13,7 @@ private:
 
 	Timer * mTimer;
 	InputManager * mInput;
+	AudioManager* mAudio;
 
 	GLTexture* mSky[3];
 	GLTexture* mMoon;

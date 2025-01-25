@@ -3,6 +3,7 @@
 StartScreen::StartScreen() {
 	mTimer = Timer::Instance();
 	mInput = InputManager::Instance();
+	mAudio = AudioManager::Instance();
 
 	for (int c = 0; c <= 2; c++) {
 		mSky[c] = new GLTexture("Sky.png");
@@ -21,6 +22,7 @@ StartScreen::StartScreen() {
 		
 		mMountains[c]->Scale(Vec2_One * 5.0f);
 		mMountains[c]->Parent(this);
+
 	}
 
 
@@ -41,6 +43,7 @@ StartScreen::StartScreen() {
 StartScreen::~StartScreen() {
 	mTimer = nullptr;
 	mInput = nullptr;
+	mAudio = nullptr;
 
 	delete mSky[0];
 	mSky[0] = nullptr;
@@ -49,9 +52,16 @@ StartScreen::~StartScreen() {
 	delete mSky[2];
 	mSky[2] = nullptr;
 
+	for (auto tex : mMountains) {
+		delete tex;
+		tex = nullptr;
+	}
+
 }
 
 void StartScreen::ResetAnimation() {
+
+	mAudio->PlayMusic("Music/menuMusic.wav");
 
 	for (int c = 0; c < sMountainPannels; c++) {
 		mMountains[c]->Position({ (c * 220.0f) - 330.0f,300.0f });

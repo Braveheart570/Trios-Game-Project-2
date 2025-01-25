@@ -2,6 +2,7 @@
 #define __SCREENMANAGER_H
 #include "StartScreen.h"
 #include "PlayScreen.h"
+#include "AudioManager.h"
 
 class ScreenManager {
 private:
