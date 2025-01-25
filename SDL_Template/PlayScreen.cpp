@@ -8,7 +8,7 @@ PlayScreen::PlayScreen() {
 	mPlayer->Parent(this);
 	mPlayer->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.9f);
 
-	mLifeLabel = new GLTexture("life:", "pico-8-mono-upper.ttf", 25, {255,204,170});
+	mLifeLabel = new GLTexture("life:", "pico-8-mono-upper.ttf", 20, {255,204,170});
 	mLifeLabel->Position({60,Graphics::SCREEN_HEIGHT-30});
 	mLifeLabel->Parent(this);
 
@@ -17,7 +17,7 @@ PlayScreen::PlayScreen() {
 		mLifeIcons[c]->Parent(this);
 	}
 
-	mScoreLabel = new GLTexture("score:", "pico-8-mono-upper.ttf", 25, {255,204,170});
+	mScoreLabel = new GLTexture("score:", "pico-8-mono-upper.ttf", 20, {255,204,170});
 	mScoreLabel->Position(400,Graphics::SCREEN_HEIGHT-30);
 	mScoreLabel->Parent(this);
 
