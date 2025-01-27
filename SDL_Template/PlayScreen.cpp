@@ -32,3 +32,7 @@ void PlayScreen::Render() {
 	//mPlayer->Render();
 	mUIBar->Render();
 }
+
+void PlayScreen::Reset() {
+	//todo call reset functions for player level ui etc...
+}
