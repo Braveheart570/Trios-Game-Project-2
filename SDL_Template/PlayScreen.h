@@ -1,7 +1,7 @@
 #ifndef __PLAYSCREEN_H
 #define __PLAYSCREEN_H
 #include "Player.h"
-#include "Scoreboard.h"
+#include "UIBar.h"
 #include "LifeIcon.h"
 
 class PlayScreen : public GameEntity {
@@ -11,12 +11,8 @@ private:
 
 	Player * mPlayer;
 
-	GLTexture* mLifeLabel;
-	std::vector<LifeIcon*> mLifeIcons;
-
-	GLTexture* mScoreLabel;
-	Scoreboard* mScoreboard;
-
+	
+	UIBar* mUIBar;
 
 
 public:

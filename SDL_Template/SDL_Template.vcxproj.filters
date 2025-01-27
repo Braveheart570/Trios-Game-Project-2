@@ -46,6 +46,12 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{708d1454-f3ae-40cd-a967-81ae0f46ce38}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Managers">
+      <UniqueIdentifier>{e4e13fc3-7dfd-4657-9dda-b5967cc8b063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Managers">
+      <UniqueIdentifier>{30a70e44-c109-4656-952e-9c23245b1f1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -64,9 +70,6 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="Scoreboard.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="ScreenManager.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="PlayScreen.cpp">
@@ -135,6 +138,12 @@
     <ClCompile Include="LifeIcon.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="ScreenManager.cpp">
+      <Filter>Source Files\Game\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="UIBar.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -150,9 +159,6 @@
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="Scoreboard.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="ScreenManager.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="PlayScreen.h">
@@ -225,6 +231,15 @@
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
     <ClInclude Include="LifeIcon.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenManager.h">
+      <Filter>Header Files\Game\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="UIBar.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
