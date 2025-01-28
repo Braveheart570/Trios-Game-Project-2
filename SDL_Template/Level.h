@@ -1,11 +1,12 @@
 #pragma once
 #include "GLTexture.h"
 #include <vector>
+#include "physEntity.h"
 #include "BoxCollider.h"
 
 using namespace SDLFramework;
 
-class Level : public GameEntity {
+class Level : public PhysEntity {
 
 public:
 
@@ -20,6 +21,4 @@ private:
 	GLTexture* mLevelTexture;
 
 	Vector2 mPlayerStart;
-
-	std::vector<BoxCollider> mLevelGeo;
 };

@@ -32,8 +32,11 @@ void PlayScreen::Update() {
 }
 
 void PlayScreen::Render() {
-	//mPlayer->Render();
+	
 	mLevels[0]->Render();
+
+	mPlayer->Render();
+
 	mUIBar->Render();
 }
 
