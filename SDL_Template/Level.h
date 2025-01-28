@@ -1,6 +1,7 @@
 #pragma once
 #include "GLTexture.h"
 #include <vector>
+#include "PhysicsManager.h"
 #include "physEntity.h"
 #include "BoxCollider.h"
 

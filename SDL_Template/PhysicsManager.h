@@ -8,6 +8,7 @@ public:
 	enum class CollisionLayers {
 		Friendly,
 		FriendlyProjectiles,
+		Level,
 		Hostile,
 		HostileProjectiles,
 		MaxLayers
@@ -17,6 +18,7 @@ public:
 		None				= 0x00,
 		Friendly			= 0x01,
 		FriendlyProjectiles = 0x02,
+		Level				= 0x03,
 		Hostile				= 0x04,
 		HostileProjectiles	= 0x08
 	};

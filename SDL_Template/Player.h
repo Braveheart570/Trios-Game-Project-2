@@ -4,6 +4,7 @@
 #include "AudioManager.h"
 #include "InputManager.h"
 #include "Bullet.h"
+#include "Level.h"
 
 using namespace SDLFramework;
 
@@ -20,8 +21,14 @@ private:
 	int mScore;
 	int mLives;
 
+	const float sGravity = 45;
+	Vector2 mVelocity;
+	const float mMaxVelocityMag = 100;
+	const float mJumpStrength = 30.0f;
+	Vector2 mPrevPos;
+	bool mGrounded;
+
 	Texture * mTexture;
-	AnimatedGLTexture * mDeathAnimation;
 
 	float mMoveSpeed;
 	Vector2 mMoveBounds;

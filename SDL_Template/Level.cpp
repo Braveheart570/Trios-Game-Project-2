@@ -7,6 +7,9 @@ Level::Level(std::string texture) {
 	mLevelTexture->Parent(this);
 
 	AddCollider(new BoxCollider({ Graphics::SCREEN_WIDTH+400,50 }), { Graphics::SCREEN_WIDTH/2 ,Graphics::SCREEN_HEIGHT - 65 });
+	AddCollider(new BoxCollider({ 200,50 }), { 100 ,Graphics::SCREEN_HEIGHT - 200 });
+
+	mId = PhysicsManager::Instance()->RegisterEntity(this,PhysicsManager::CollisionLayers::Level);
 }
 
 Level::~Level() {
