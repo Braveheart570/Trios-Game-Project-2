@@ -1,6 +1,7 @@
 #pragma once
-#include "Texture.h"
+#include "GLTexture.h"
 #include <vector>
+#include "BoxCollider.h"
 
 using namespace SDLFramework;
 
@@ -8,7 +9,7 @@ class Level : public GameEntity {
 
 public:
 
-	Level();
+	Level(std::string texture);
 	~Level();
 
 	void Update() override;
@@ -16,10 +17,9 @@ public:
 
 private:
 
-	Texture* mLevelTexture;
-
-	std::vector<Texture*> mEnemies;
+	GLTexture* mLevelTexture;
 
 	Vector2 mPlayerStart;
 
+	std::vector<BoxCollider> mLevelGeo;
 };

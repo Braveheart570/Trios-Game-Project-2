@@ -11,6 +11,9 @@ PlayScreen::PlayScreen() {
 	mUIBar = new UIBar();
 	mUIBar->Parent(this);
 
+	mLevels[0] = new Level("lvl1.png");
+	mLevels[0]->Parent(this);
+
 }
 
 PlayScreen::~PlayScreen() {
@@ -30,6 +33,7 @@ void PlayScreen::Update() {
 
 void PlayScreen::Render() {
 	//mPlayer->Render();
+	mLevels[0]->Render();
 	mUIBar->Render();
 }
 
