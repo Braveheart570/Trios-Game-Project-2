@@ -6,8 +6,8 @@ Level::Level(std::string texture, Player* player) {
 	mLevelTexture->Scale(Vec2_One*5.0f);
 	mLevelTexture->Parent(this);
 
-	mPlatforms.push_back(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 65 } ,{ Graphics::SCREEN_WIDTH + 400,50 }));
-	mPlatforms.push_back(new Platform({ 100 ,Graphics::SCREEN_HEIGHT - 200 }, { 200,50 }));
+	mPlatforms.push_back(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 65 } ,{ Graphics::SCREEN_WIDTH + 400,5 }));
+	mPlatforms.push_back(new Platform({ 100 ,Graphics::SCREEN_HEIGHT - 240 }, { 200,5 }));
 
 	mPlayer = player;
 

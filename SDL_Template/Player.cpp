@@ -138,7 +138,7 @@ void Player::Hit(PhysEntity * other) {
 	
 	if (dynamic_cast<Platform*>(other) ) {
 		if (mVelocity.y >= 0) {
-			Position({ Position().x,mPrevPos.y });
+			Position({ Position().x,other->Position().y+1});
 			mVelocity.y = 0.0f;
 			mGrounded = true;
 		}
