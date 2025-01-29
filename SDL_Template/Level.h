@@ -3,15 +3,17 @@
 #include <vector>
 #include "PhysicsManager.h"
 #include "physEntity.h"
-#include "BoxCollider.h"
+#include "Platform.h"
+#include "Bat.h"
+#include "Player.h"
 
 using namespace SDLFramework;
 
-class Level : public PhysEntity {
+class Level : public GameEntity {
 
 public:
 
-	Level(std::string texture);
+	Level(std::string texture, Player* player);
 	~Level();
 
 	void Update() override;
@@ -20,6 +22,12 @@ public:
 private:
 
 	GLTexture* mLevelTexture;
+
+	Player* mPlayer;
+
+	std::vector<Platform*> mPlatforms;
+
+	Bat* testBat;
 
 	Vector2 mPlayerStart;
 };

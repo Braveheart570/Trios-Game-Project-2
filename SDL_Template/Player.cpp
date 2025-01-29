@@ -21,6 +21,7 @@ Player::Player() {
 	
 	mTexture = new GLTexture("PlayerShips.png", 0, 0, 60, 64);
 	mTexture->Parent(this);
+	mTexture->Scale(Vec2_One*0.25f);
 	mTexture->Position(Vec2_Zero);
 
 	mMoveSpeed = 50.0f;
@@ -31,7 +32,7 @@ Player::Player() {
 		mBullets[i] = new Bullet(true);
 	}
 
-	AddCollider(new BoxCollider(Vector2(32.0f, 48.0f)));
+	AddCollider(new BoxCollider(Vector2(32.0f, 48.0f)), {0.0f,-24.0f});
 
 	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Friendly);
 }
@@ -80,10 +81,6 @@ void Player::HandleMovement() {
 	// velocity cap
 	if (mVelocity.Magnitude() > mMaxVelocityMag) mVelocity = mVelocity.Normalized() * mMaxVelocityMag;
 
-
-
-	
-	
 
 	
 	mPrevPos = Position();
@@ -139,17 +136,20 @@ bool Player::IgnoreCollisions()
 
 void Player::Hit(PhysEntity * other) {
 	
-	if (dynamic_cast<Level*>(other)) {
-		//std::cout << "hit Floor" << std::endl;
-		Position({Position().x,mPrevPos.y});
-		mVelocity.y = 0.0f;
-		mGrounded = true;
+	if (dynamic_cast<Platform*>(other) ) {
+		if (mVelocity.y >= 0) {
+			Position({ Position().x,mPrevPos.y });
+			mVelocity.y = 0.0f;
+			mGrounded = true;
+		}
+
+		
 		return;
 	}
-	mLives -= 1;
-	mAnimating = true;
-	mAudio->PlaySFX("SFX/PlayerExplosion.wav");
-	mWasHit = true;
+	//mLives -= 1;
+	//mAnimating = true;
+	//mAudio->PlaySFX("SFX/PlayerExplosion.wav");
+	//mWasHit = true;
 }
 
 bool Player::WasHit() {
@@ -181,7 +181,7 @@ void Player::Render() {
 		if (mAnimating) {
 		}
 		else {
-			//mTexture->Render();
+			mTexture->Render();
 		}
 	}
 
@@ -190,4 +190,5 @@ void Player::Render() {
 	}
 
 	PhysEntity::Render();
+	
 }

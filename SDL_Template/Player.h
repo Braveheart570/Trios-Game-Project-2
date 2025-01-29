@@ -4,7 +4,7 @@
 #include "AudioManager.h"
 #include "InputManager.h"
 #include "Bullet.h"
-#include "Level.h"
+#include "Platform.h"
 
 using namespace SDLFramework;
 
