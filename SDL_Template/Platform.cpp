@@ -1,8 +1,8 @@
 #include "Platform.h"
 
-Platform::Platform(Vector2 pos, Vector2 size) : PhysEntity(){
+Platform::Platform(Vector2 pos, float width) : PhysEntity(){
 
-	AddCollider(new BoxCollider(size), {0,-size.y/2});
+	AddCollider(new BoxCollider({width,5}), { 0,-5 / 2 });
 	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Level);
 	Position(pos);
 

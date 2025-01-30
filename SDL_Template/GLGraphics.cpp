@@ -58,6 +58,23 @@ namespace SDLFramework {
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
+	void GLGraphics::DrawLine(float startX, float startY, float endX, float endY) {
+		
+		/*float x1 = 2 * startX / Graphics::SCREEN_WIDTH - 1.5;
+		float y1 = 2 * startY / Graphics::SCREEN_HEIGHT - 1.5;
+
+		float x2 = 2 * endX / Graphics::SCREEN_WIDTH - 1.5;
+		float y2 = 2 * endY / Graphics::SCREEN_HEIGHT - 1.5;*/
+		
+		glColor3f(0.0, 1.0, 0.0);
+		glBegin(GL_LINE_STRIP);
+		glVertex2f(0, 0);
+		glVertex2f(1, 1);
+		glEnd();
+
+	}
+
+
 	void GLGraphics::InitRenderData(Texture* texture, SDL_Rect* srcRect, GLuint quadVAO, SDL_RendererFlip flip) {
 		GLTexture* glTexture = dynamic_cast<GLTexture*>(texture);
 

@@ -5,14 +5,12 @@
 
 using namespace SDLFramework;
 
-
-class Platform : public PhysEntity {
-
+class Wall : public PhysEntity {
 
 public:
 
-	Platform(Vector2 pos,float width);
-	~Platform();
+	Wall(Vector2 pos, float height = 160.0f);
+	~Wall();
 
 private:
 

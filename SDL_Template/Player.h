@@ -5,6 +5,7 @@
 #include "InputManager.h"
 #include "Bullet.h"
 #include "Platform.h"
+#include "wall.h"
 
 using namespace SDLFramework;
 

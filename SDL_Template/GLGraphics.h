@@ -22,6 +22,7 @@ namespace SDLFramework {
 
 		// Inherited from Graphics
 		virtual void DrawSprite(GLTexture* texture, SDL_Rect* srcRect = nullptr, SDL_Rect* dstRect = nullptr, float angle = 0.0f, SDL_RendererFlip flip = SDL_FLIP_NONE) override;
+		virtual void DrawLine(float startX, float startY, float endX, float endY) override;
 
 		virtual void ClearBackBuffer() override;
 		virtual void Render() override;

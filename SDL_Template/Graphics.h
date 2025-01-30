@@ -53,7 +53,7 @@ namespace SDLFramework {
 
 		virtual void DrawSprite(GLTexture* texture, SDL_Rect* srcRect = nullptr, SDL_Rect* dstRect = nullptr, float angle = 0.0f, SDL_RendererFlip flip = SDL_FLIP_NONE) {}
 		virtual void DrawTexture(SDL_Texture* texture, SDL_Rect* srcRect = nullptr, SDL_Rect* dstRect = nullptr, float angle = 0.0f, SDL_RendererFlip flip = SDL_FLIP_NONE);
-		void DrawLine(float startX, float startY, float endX, float endY);
+		virtual void DrawLine(float startX, float startY, float endX, float endY);
 
 		virtual void ClearBackBuffer();
 		virtual void Render();

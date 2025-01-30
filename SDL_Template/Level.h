@@ -4,6 +4,7 @@
 #include "PhysicsManager.h"
 #include "physEntity.h"
 #include "Platform.h"
+#include "Wall.h"
 #include "Bat.h"
 #include "Player.h"
 
@@ -26,6 +27,7 @@ private:
 	Player* mPlayer;
 
 	std::vector<Platform*> mPlatforms;
+	std::vector<Wall*> mWalls;
 
 	Bat* testBat;
 

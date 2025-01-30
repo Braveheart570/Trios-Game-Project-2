@@ -137,7 +137,7 @@ bool Player::IgnoreCollisions()
 void Player::Hit(PhysEntity * other) {
 	
 	if (dynamic_cast<Platform*>(other) ) {
-		if (mVelocity.y >= 0) {
+		if (mVelocity.y >= 0 && Position().y - other->Position().y >= 0) {
 			Position({ Position().x,other->Position().y+1});
 			mVelocity.y = 0.0f;
 			mGrounded = true;
@@ -146,6 +146,18 @@ void Player::Hit(PhysEntity * other) {
 		
 		return;
 	}
+
+	if (dynamic_cast<Wall*>(other)) {
+		if (Position().x > other->Position().x) {
+			mVelocity.x = 0.0f;
+			Position(other->Position().x + 38, Position().y); //todo kind of a magic number
+		}
+		else if (Position().x < other->Position().x) {
+			mVelocity.x = 0.0f;
+			Position(other->Position().x - 38, Position().y); //todo kind of a magic number
+		}
+	}
+
 	//mLives -= 1;
 	//mAnimating = true;
 	//mAudio->PlaySFX("SFX/PlayerExplosion.wav");
