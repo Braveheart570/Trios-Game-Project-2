@@ -20,6 +20,9 @@ Enemy::~Enemy() {
 }
 
 void Enemy::Render() {
+	if (!Active()) {
+		return;
+	}
 	mTexture->Render();
 	mColliders[0]->Render();
 }

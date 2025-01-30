@@ -21,6 +21,11 @@ Bat::~Bat() {
 }
 
 void Bat::Update() {
+
+	if (!Active()) {
+		return;
+	}
+
 	dynamic_cast<AnimatedGLTexture*>(mTexture)->Update();
 	if (mLeft) {
 		Translate(Vec2_Right * -mSpeed * mTimer->DeltaTime());

@@ -27,7 +27,7 @@ void PhysEntity::AddCollider(Collider * collider, Vector2 localPos) {
 }
 
 bool PhysEntity::IgnoreCollisions() {
-	return false;
+	return !Active();
 }
 
 PhysEntity::PhysEntity() {

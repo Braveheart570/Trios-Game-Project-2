@@ -34,7 +34,7 @@ Level::Level(std::string texture, Player* player) {
 
 	mPlayer = player;
 
-	testBat = new Bat({ Graphics::SCREEN_WIDTH / 2,Graphics::SCREEN_HEIGHT / 2 }, player, true);
+	testBat = new Bat({ Graphics::SCREEN_WIDTH / 2,(Graphics::SCREEN_HEIGHT / 2) + 100 }, player, true);
 }
 
 Level::~Level() {
