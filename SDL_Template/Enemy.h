@@ -2,6 +2,8 @@
 #include "PhysEntity.h"
 #include "AnimatedGLTexture.h"
 #include "Timer.h"
+#include "Player.h"
+#include "BoxCollider.h"
 
 using namespace SDLFramework;
 
@@ -9,11 +11,13 @@ class Enemy : public PhysEntity {
 
 public:
 
-	Enemy(GLTexture* tex, int pts, int health = 1, bool animated = true);
+	Enemy(GLTexture* tex, Player* player, int pts, int health = 1, bool animated = true);
 	~Enemy();
 
 	void Render() override;
 	virtual void Update() override = 0;
+
+	void Hit(PhysEntity* other) override;
 
 protected:
 
@@ -25,5 +29,7 @@ protected:
 	int mSpeed;
 
 	GLTexture* mTexture;
+
+	Player* mPlayer;
 
 };

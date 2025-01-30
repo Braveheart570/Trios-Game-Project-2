@@ -15,6 +15,8 @@ private:
 
 	float mSpeed;
 
+	bool mFireRight;
+
 private:
 	//Inherited from PhysEntity
 	bool IgnoreCollisions() override;
@@ -23,7 +25,7 @@ public:
 	Bullet(bool friendly);
 	~Bullet();
 
-	void Fire(Vector2 pos);
+	void Fire(Vector2 pos, bool right);
 	void Reload();
 
 	// Inherited from PhysEntity

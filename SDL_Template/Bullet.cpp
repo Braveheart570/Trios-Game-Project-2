@@ -9,7 +9,7 @@ bool Bullet::IgnoreCollisions() {
 Bullet::Bullet(bool friendly) {
 	mTimer = Timer::Instance();
 
-	mTexture = new GLTexture("Bullet.png");
+	mTexture = new GLTexture("GalagaAssets/Bullet.png");
 	mTexture->Parent(this);
 	mTexture->Position(Vec2_Zero);
 
@@ -34,7 +34,8 @@ Bullet::~Bullet() {
 	mTexture = nullptr;
 }
 
-void Bullet::Fire(Vector2 pos) {
+void Bullet::Fire(Vector2 pos, bool right) {
+	mFireRight = right;
 	Position(pos);
 	Active(true);
 }
@@ -44,15 +45,22 @@ void Bullet::Reload() {
 }
 
 void Bullet::Hit(PhysEntity * other) {
+	std::cout << Position().x << " | " << Position().y << std::endl;
 	Reload();
 }
 
 void Bullet::Update() {
 	if (Active()) {
-		Translate(-Vec2_Up * mSpeed * mTimer->DeltaTime());
+		if (mFireRight) {
+			Translate(Vec2_Right * mSpeed * mTimer->DeltaTime());
+		}
+		else {
+			Translate(-Vec2_Right * mSpeed * mTimer->DeltaTime());
+		}
+		
 
 		Vector2 pos = Position();
-		if (pos.y < -OFFSCREEN_BUFFER) {
+		if (pos.x < -OFFSCREEN_BUFFER || pos.x > Graphics::SCREEN_WIDTH + OFFSCREEN_BUFFER) {
 			Reload();
 		}
 	}

@@ -30,9 +30,6 @@ void ScreenManager::Update() {
 		break;
 	case Play:
 		mPlayScreen->Update();
-		if (mInput->KeyPressed(SDL_SCANCODE_X)) {
-			mCurrentScreen = Start;
-		}
 		break;
 	}
 }

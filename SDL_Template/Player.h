@@ -21,6 +21,7 @@ private:
 
 	int mScore;
 	int mLives;
+	bool mFacingRight;
 
 	const float sGravity = 45;
 	Vector2 mVelocity;

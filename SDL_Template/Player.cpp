@@ -15,11 +15,12 @@ Player::Player() {
 
 	mScore = 0;
 	mLives = 2;
+	mFacingRight = true;
 
 	mVelocity = Vec2_Zero;
 	mGrounded = false;
 	
-	mTexture = new GLTexture("PlayerShips.png", 0, 0, 60, 64);
+	mTexture = new GLTexture("GalagaAssets/PlayerShips.png", 0, 0, 60, 64);
 	mTexture->Parent(this);
 	mTexture->Scale(Vec2_One*0.25f);
 	mTexture->Position(Vec2_Zero);
@@ -98,11 +99,11 @@ void Player::HandleMovement() {
 }
 
 void Player::HandleFiring() {
-	if (mInput->KeyPressed(SDL_SCANCODE_SPACE)) {
+	if (mInput->KeyPressed(SDL_SCANCODE_X)) {
 		for (int i = 0; i < MAX_BULLETS; ++i) {
 			if (!mBullets[i]->Active()) {
-				mBullets[i]->Fire(Position());
-				mAudio->PlaySFX("SFX/Fire.wav");
+				mBullets[i]->Fire(Position()+Vec2_Up* -30, mFacingRight);
+				//mAudio->PlaySFX("SFX/Fire.wav");
 				break;
 			}
 		}
@@ -179,6 +180,12 @@ void Player::Update() {
 	else {
 		if (Active()) {
 			HandleMovement();
+			if (mVelocity.x > 0) {
+				mFacingRight = true;
+			}
+			else if (mVelocity.x < 0) {
+				mFacingRight = false;
+			}
 			HandleFiring();
 		}
 	}

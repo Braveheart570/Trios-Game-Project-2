@@ -1,6 +1,5 @@
 #pragma once
 #include "Enemy.h"
-#include "Player.h"
 
 class Bat : public Enemy {
 
@@ -16,6 +15,6 @@ private:
 	bool mLeft;
 	bool mTrackingPlayer;
 	int mYTrigger;
-	Player* mPlayer;
+	int mPlayerOriginOffset;
 
 };

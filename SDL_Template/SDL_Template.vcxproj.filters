@@ -263,10 +263,10 @@
     <ClInclude Include="Enemy.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Bat.h">
-      <Filter>Header Files\Game\Managers</Filter>
-    </ClInclude>
     <ClInclude Include="Wall.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>

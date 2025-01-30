@@ -6,7 +6,7 @@ PlayScreen::PlayScreen() {
 
 	mPlayer = new Player();
 	mPlayer->Parent(this);
-	mPlayer->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.2f);
+	mPlayer->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 
 	mUIBar = new UIBar();
 	mUIBar->Parent(this);
