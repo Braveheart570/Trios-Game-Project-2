@@ -23,6 +23,10 @@ public:
 	void Update() override;
 	void Render() override;
 
+	void AddPlatform(Platform* platform);
+	void AddWall(Wall* wall);
+	void AddEnemy(Enemy* enemy);
+
 private:
 
 	GLTexture* mLevelTexture;

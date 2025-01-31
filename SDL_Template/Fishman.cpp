@@ -31,6 +31,14 @@ Fishman::~Fishman() {
 
 void Fishman::Update() {
 
+	for (int i = 0; i < MAX_BULLETS; ++i) {
+		mBullets[i]->Update();
+	}
+
+	if (!Active()) {
+		return;
+	}
+
 	mTexture->Update();
 
 	if (mFacingRight) {
@@ -65,10 +73,6 @@ void Fishman::Update() {
 			mFireTime = 0.0f;
 		}
 
-	}
-
-	for (int i = 0; i < MAX_BULLETS; ++i) {
-		mBullets[i]->Update();
 	}
 
 }

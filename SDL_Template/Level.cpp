@@ -6,35 +6,9 @@ Level::Level(std::string texture, Player* player) {
 	mLevelTexture->Scale(Vec2_One*5.0f);
 	mLevelTexture->Parent(this);
 
-	mPlatforms.push_back(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 } , Graphics::SCREEN_WIDTH + 400));
-
-	mPlatforms.push_back(new Platform({ 60 ,Graphics::SCREEN_HEIGHT - 250 }, 120));
-	mPlatforms.push_back(new Platform({ Graphics::SCREEN_WIDTH - 60 ,Graphics::SCREEN_HEIGHT - 250 }, 120));
-
-	mPlatforms.push_back(new Platform({ (Graphics::SCREEN_WIDTH / 2) + 77, Graphics::SCREEN_HEIGHT - 250 }, 80));
-	mPlatforms.push_back(new Platform({ (Graphics::SCREEN_WIDTH / 2) - 77, Graphics::SCREEN_HEIGHT - 250 }, 80));
-
-	mPlatforms.push_back(new Platform({ (Graphics::SCREEN_WIDTH / 2) + 150, (Graphics::SCREEN_WIDTH / 2) - 83 }, 100));
-	mPlatforms.push_back(new Platform({ 150, (Graphics::SCREEN_WIDTH / 2) - 83 }, 100));
-
-	mPlatforms.push_back(new Platform({ (Graphics::SCREEN_WIDTH / 2) + 77, 75 }, 80));
-	mPlatforms.push_back(new Platform({ (Graphics::SCREEN_WIDTH / 2) - 77, 75 }, 80));
-
-	mPlatforms.push_back(new Platform({ (Graphics::SCREEN_WIDTH) - 20, 75 }, 200));
-	mPlatforms.push_back(new Platform({ 20, 75 }, 200));
-
-	mWalls.push_back(new Wall({ 20,Graphics::SCREEN_HEIGHT - 85 }, 160));
-	mWalls.push_back(new Wall({ Graphics::SCREEN_WIDTH - 20,Graphics::SCREEN_HEIGHT - 85 }, 160));
-
-	mWalls.push_back(new Wall({220,Graphics::SCREEN_HEIGHT - 240 }, 320));
-	mWalls.push_back(new Wall({Graphics::SCREEN_WIDTH - 220,Graphics::SCREEN_HEIGHT - 240 }, 320));
-
-	mWalls.push_back(new Wall({ 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
-	mWalls.push_back(new Wall({Graphics::SCREEN_WIDTH - 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
-
 	mPlayer = player;
 
-	mEnemies.push_back(new Fishman({500,510}, mPlayer));
+	
 }
 
 Level::~Level() {
@@ -76,4 +50,16 @@ void Level::Render() {
 	for (int c = 0; c < mEnemies.size(); c++) {
 		mEnemies[c]->Render();
 	}
+}
+
+void Level::AddPlatform(Platform* platform) {
+	mPlatforms.push_back(platform);
+}
+
+void Level::AddWall(Wall* wall) {
+	mWalls.push_back(wall);
+}
+
+void Level::AddEnemy(Enemy* enemy) {
+	mEnemies.push_back(enemy);
 }
