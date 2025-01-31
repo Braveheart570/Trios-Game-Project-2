@@ -15,6 +15,10 @@ Player::Player() {
 	mFacingRight = true;
 	mCrouch = false;
 
+	mFiring = false;
+	mFireTime = 0.0f;
+	mFireDur = 0.15f;
+
 	mInvulnerable = false;
 	mInvulnerableTime = 0.0f;
 	mInvulnerableDur = 3.0f;
@@ -31,6 +35,16 @@ Player::Player() {
 	mCrouchTexture->Parent(this);
 	mCrouchTexture->Scale(Vec2_One*5.0f);
 	mCrouchTexture->Position(Vec2_Up* -(mCrouchTexture->ScaledDimensions().y / 2));
+
+	mFiringTexture = new GLTexture("CarpathianSprites.png",0,0,15,16);
+	mFiringTexture->Parent(this);
+	mFiringTexture->Scale(Vec2_One * 5.0f);
+	mFiringTexture->Position(Vec2_Up * -(mFiringTexture->ScaledDimensions().y / 2));
+
+	mCrouchFireTexture = new GLTexture("CarpathianSprites.png",86,3,13,13);
+	mCrouchFireTexture->Parent(this);
+	mCrouchFireTexture->Scale(Vec2_One * 5.0f);
+	mCrouchFireTexture->Position(Vec2_Up * -(mCrouchFireTexture->ScaledDimensions().y / 2));
 
 	mMoveSpeed = 50.0f;
 	mMoveBounds = Vector2(0.0f + mTexture->ScaledDimensions().x/2, Graphics::SCREEN_WIDTH - mTexture->ScaledDimensions().x/2);
@@ -52,6 +66,18 @@ Player::~Player() {
 
 	delete mTexture;
 	mTexture = nullptr;
+
+	delete mCrouchTexture;
+	mCrouchTexture = nullptr;
+
+	delete mDeadTexture;
+	mDeadTexture = nullptr;
+
+	delete mFiringTexture;
+	mFiringTexture = nullptr;
+
+	delete mCrouchFireTexture;
+	mCrouchFireTexture = nullptr;
 
 	for (auto b : mBullets) {
 		delete b;
@@ -115,6 +141,8 @@ void Player::HandleFiring() {
 			if (!mBullets[i]->Active()) {
 				mBullets[i]->Fire(Position()+Vec2_Up* -30, mFacingRight);
 				//mAudio->PlaySFX("SFX/Fire.wav");
+				mFireTime = 0.0f;
+				mFiring = true;
 				break;
 			}
 		}
@@ -199,6 +227,12 @@ void Player::Update() {
 		HandleFiring();
 	}
 	
+	if (mFiring) {
+		mFireTime += mTimer->DeltaTime();
+		if (mFireTime >= mFireDur) {
+			mFiring = false;
+		}
+	}
 
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		mBullets[i]->Update();
@@ -208,10 +242,21 @@ void Player::Update() {
 void Player::Render() {
 	if (Active()) {
 		if (mCrouch) {
-			mCrouchTexture->Render();
+			if (mFiring) {
+				mCrouchFireTexture->Render();
+			}
+			else {
+				mCrouchTexture->Render();
+			}
+			
 		}
 		else {
-			mTexture->Render();
+			if (mFiring) {
+				mFiringTexture->Render();
+			}
+			else {
+				mTexture->Render();
+			}
 		}
 		
 		PhysEntity::Render();

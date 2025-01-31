@@ -21,6 +21,10 @@ private:
 	bool mFacingRight;
 	bool mCrouch;
 
+	bool mFiring;
+	float mFireTime;
+	float mFireDur;
+
 	bool mInvulnerable;
 	float mInvulnerableTime;
 	float mInvulnerableDur;
@@ -35,6 +39,8 @@ private:
 	GLTexture * mTexture;
 	GLTexture* mCrouchTexture;
 	GLTexture* mDeadTexture;
+	GLTexture* mFiringTexture;
+	GLTexture* mCrouchFireTexture;
 
 	float mMoveSpeed;
 	Vector2 mMoveBounds;
