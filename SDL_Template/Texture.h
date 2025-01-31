@@ -31,6 +31,8 @@ namespace SDLFramework {
 
 		void Flip(bool hFlip, bool vFLip);
 
+		bool Flipped(bool horizontal = true);
+
 		virtual void Render() override;
 
 	protected:

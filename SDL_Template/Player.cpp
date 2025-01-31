@@ -218,11 +218,22 @@ void Player::Update() {
 		}
 
 		HandleMovement();
+		std::cout << mTexture->Flipped() << std::endl;
 		if (mVelocity.x > 0) {
 			mFacingRight = true;
+			if (mTexture->Flipped()) mTexture->Flip(false, false);
+			if (mCrouchTexture->Flipped()) mCrouchTexture->Flip(false, false);
+			if (mFiringTexture->Flipped()) mFiringTexture->Flip(false, false);
+			if (mCrouchFireTexture->Flipped()) mCrouchFireTexture->Flip(false, false);
+			//if (mDeadTexture->Flipped()) mDeadTexture->Flip(false, false);
 		}
 		else if (mVelocity.x < 0) {
 			mFacingRight = false;
+			if (!mTexture->Flipped()) mTexture->Flip(true, false);
+			if (!mCrouchTexture->Flipped()) mCrouchTexture->Flip(true, false);
+			if (!mFiringTexture->Flipped()) mFiringTexture->Flip(true, false);
+			if (!mCrouchFireTexture->Flipped()) mCrouchFireTexture->Flip(true, false);
+			//if (!mDeadTexture->Flipped()) mDeadTexture->Flip(true, false);
 		}
 		HandleFiring();
 	}

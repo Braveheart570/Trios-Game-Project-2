@@ -98,4 +98,23 @@ namespace SDLFramework {
 			mFlip = SDL_FLIP_NONE;
 		}
 	}
+
+	bool Texture::Flipped(bool horizontal) {
+		if (horizontal) {
+			if (mFlip == SDL_FLIP_HORIZONTAL) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			if (mFlip == SDL_FLIP_VERTICAL) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	}
 }
