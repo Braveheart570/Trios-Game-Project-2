@@ -19,6 +19,8 @@ public:
 
 	void Hit(PhysEntity* other) override;
 
+	bool DamageOnContact();
+
 protected:
 
 	Timer* mTimer;
@@ -27,6 +29,7 @@ protected:
 	int mPts;
 	bool mAnimated;
 	int mSpeed;
+	bool mDamageOnContact;
 
 	GLTexture* mTexture;
 

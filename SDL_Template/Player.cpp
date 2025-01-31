@@ -10,7 +10,7 @@ Player::Player() {
 	mAudio = AudioManager::Instance();
 
 	mScore = 0;
-	mMaxLives = 2;
+	mMaxLives = 10;
 	mLives = mMaxLives;
 	mFacingRight = true;
 	mCrouch = false;
@@ -141,7 +141,6 @@ void Player::HandleFiring() {
 			if (!mBullets[i]->Active()) {
 				mBullets[i]->Fire(Position()+Vec2_Up* -30, mFacingRight);
 				//mAudio->PlaySFX("SFX/Fire.wav");
-				mFireTime = 0.0f;
 				mFiring = true;
 				break;
 			}
@@ -175,7 +174,7 @@ void Player::AddScore(int change) {
 
 bool Player::IgnoreCollisions()
 {
-	return  mInvulnerable || !Active();
+	return !Active();
 }
 
 void Player::Hit(PhysEntity * other) {
@@ -199,10 +198,8 @@ void Player::Hit(PhysEntity * other) {
 	else if (false) {
 		//todo heart
 	}
-	else {
-		
-	}
 
+	//NOTE to avoid cyclical reference damage is delt in the Enemy Class
 	
 }
 
@@ -218,7 +215,7 @@ void Player::Update() {
 		}
 
 		HandleMovement();
-		std::cout << mTexture->Flipped() << std::endl;
+
 		if (mVelocity.x > 0) {
 			mFacingRight = true;
 			if (mTexture->Flipped()) mTexture->Flip(false, false);
@@ -242,6 +239,14 @@ void Player::Update() {
 		mFireTime += mTimer->DeltaTime();
 		if (mFireTime >= mFireDur) {
 			mFiring = false;
+			mFireTime = 0.0f;
+		}
+	}
+	if (mInvulnerable) {
+		mInvulnerableTime += mTimer->DeltaTime();
+		if (mInvulnerableTime >= mInvulnerableDur) {
+			mInvulnerable = false;
+			mInvulnerableTime = 0.0f;
 		}
 	}
 
@@ -252,23 +257,26 @@ void Player::Update() {
 
 void Player::Render() {
 	if (Active()) {
-		if (mCrouch) {
-			if (mFiring) {
-				mCrouchFireTexture->Render();
+		if (!mInvulnerable) {
+			if (mCrouch) {
+				if (mFiring) {
+					mCrouchFireTexture->Render();
+				}
+				else {
+					mCrouchTexture->Render();
+				}
+
 			}
 			else {
-				mCrouchTexture->Render();
-			}
-			
-		}
-		else {
-			if (mFiring) {
-				mFiringTexture->Render();
-			}
-			else {
-				mTexture->Render();
+				if (mFiring) {
+					mFiringTexture->Render();
+				}
+				else {
+					mTexture->Render();
+				}
 			}
 		}
+		
 		
 		PhysEntity::Render();
 	}
@@ -279,4 +287,8 @@ void Player::Render() {
 
 	
 	
+}
+
+bool Player::Invulnerable() {
+	return mInvulnerable;
 }

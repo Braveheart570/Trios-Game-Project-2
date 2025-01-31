@@ -51,7 +51,7 @@ private:
 private:
 	void HandleMovement();
 	void HandleFiring();
-	void TakeHit();
+	
 
 public:
 	Player();
@@ -68,5 +68,8 @@ public:
 
 	void Update() override;
 	void Render() override;
+
+	void TakeHit();
+	bool Invulnerable();
 };
 #endif
