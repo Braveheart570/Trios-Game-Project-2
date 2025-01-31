@@ -8,6 +8,7 @@
 #include "Bat.h"
 #include "Player.h"
 #include "Torch.h"
+#include "Zombie.h"
 
 using namespace SDLFramework;
 

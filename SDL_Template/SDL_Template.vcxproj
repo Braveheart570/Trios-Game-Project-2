@@ -192,6 +192,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClCompile Include="Torch.cpp" />
     <ClCompile Include="UIBar.cpp" />
     <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedTexture.h" />
@@ -231,6 +232,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClInclude Include="Torch.h" />
     <ClInclude Include="UIBar.h" />
     <ClInclude Include="Wall.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\Shaders\fs.shader" />
