@@ -8,7 +8,7 @@ public:
 	Zombie(Vector2 pos, Player* player);
 	~Zombie();
 
-	void Update() override;
+	virtual void Update() override;
 
 
 private:

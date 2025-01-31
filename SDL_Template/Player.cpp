@@ -198,8 +198,13 @@ void Player::Hit(PhysEntity * other) {
 	else if (false) {
 		//todo heart
 	}
+	else if (dynamic_cast<Bullet*>(other) && !mInvulnerable) {
+		TakeHit();
+	}
 
-	//NOTE to avoid cyclical reference damage is delt in the Enemy Class
+	//NOTE to avoid cyclical reference enemy contact damage is delt in the Enemy Class
+
+
 	
 }
 

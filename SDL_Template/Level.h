@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Torch.h"
 #include "Zombie.h"
+#include "Fishman.h"
 
 using namespace SDLFramework;
 

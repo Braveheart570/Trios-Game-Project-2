@@ -14,7 +14,7 @@ public:
 	Enemy(GLTexture* tex, Player* player, int pts, int health = 1, bool animated = true);
 	~Enemy();
 
-	void Render() override;
+	virtual void Render() override;
 	virtual void Update() override = 0;
 
 	void Hit(PhysEntity* other) override;

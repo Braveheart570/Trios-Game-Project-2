@@ -34,9 +34,7 @@ Level::Level(std::string texture, Player* player) {
 
 	mPlayer = player;
 
-	mEnemies.push_back( new Bat({Graphics::SCREEN_WIDTH / 2,(Graphics::SCREEN_HEIGHT / 2) + 100}, mPlayer, true));
-	mEnemies.push_back(new Torch({ 440,500 }, mPlayer));
-	mEnemies.push_back(new Zombie({440,550},mPlayer));
+	mEnemies.push_back(new Fishman({500,510}, mPlayer));
 }
 
 Level::~Level() {
