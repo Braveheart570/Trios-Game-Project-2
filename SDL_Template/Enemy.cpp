@@ -29,6 +29,10 @@ void Enemy::Render() {
 
 void Enemy::Hit(PhysEntity* other) {
 	if (dynamic_cast<Bullet*>(other)) {
-		Active(false);
+		mHealth--;
+		if (mHealth <= 0) {
+			Active(false);
+		}
+		
 	}
 }

@@ -45,7 +45,6 @@ void Bullet::Reload() {
 }
 
 void Bullet::Hit(PhysEntity * other) {
-	std::cout << Position().x << " | " << Position().y << std::endl;
 	Reload();
 }
 

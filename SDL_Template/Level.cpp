@@ -59,11 +59,11 @@ void Level::Update() {
 
 void Level::Render() {
 	mLevelTexture->Render();
-	/*for (auto plat : mPlatforms) {
+	for (auto plat : mPlatforms) {
 		plat->Render();
 	}
 	for (auto wall : mWalls) {
 		wall->Render();
-	}*/
+	}
 	testBat->Render();
 }

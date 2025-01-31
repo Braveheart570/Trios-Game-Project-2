@@ -12,7 +12,10 @@ public:
 	Wall(Vector2 pos, float height = 160.0f);
 	~Wall();
 
+	float Width();
+
 private:
 
+	float mWidth;
 
 };

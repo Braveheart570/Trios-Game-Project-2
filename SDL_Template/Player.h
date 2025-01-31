@@ -15,13 +15,15 @@ private:
 	InputManager * mInput;
 	AudioManager * mAudio;
 
-	bool mVisible;
-	bool mAnimating;
-	bool mWasHit;
-
 	int mScore;
+	int mMaxLives;
 	int mLives;
 	bool mFacingRight;
+	bool mCrouch;
+
+	bool mInvulnerable;
+	float mInvulnerableTime;
+	float mInvulnerableDur;
 
 	const float sGravity = 45;
 	Vector2 mVelocity;
@@ -30,7 +32,9 @@ private:
 	Vector2 mPrevPos;
 	bool mGrounded;
 
-	Texture * mTexture;
+	GLTexture * mTexture;
+	GLTexture* mCrouchTexture;
+	GLTexture* mDeadTexture;
 
 	float mMoveSpeed;
 	Vector2 mMoveBounds;
@@ -41,13 +45,11 @@ private:
 private:
 	void HandleMovement();
 	void HandleFiring();
+	void TakeHit();
 
 public:
 	Player();
 	~Player();
-
-	void Visible(bool visible);
-	bool IsAnimating();
 
 	int Score();
 	int Lives();
@@ -57,8 +59,6 @@ public:
 	// Inherited from PhysEntity
 	bool IgnoreCollisions() override;
 	void Hit(PhysEntity * other) override;
-	
-	bool WasHit();
 
 	void Update() override;
 	void Render() override;

@@ -9,21 +9,28 @@ Player::Player() {
 	mInput = InputManager::Instance();
 	mAudio = AudioManager::Instance();
 
-	mVisible = true;
-	mAnimating = false;
-	mWasHit = false;
-
 	mScore = 0;
-	mLives = 2;
+	mMaxLives = 2;
+	mLives = mMaxLives;
 	mFacingRight = true;
+	mCrouch = false;
+
+	mInvulnerable = false;
+	mInvulnerableTime = 0.0f;
+	mInvulnerableDur = 3.0f;
 
 	mVelocity = Vec2_Zero;
 	mGrounded = false;
 	
-	mTexture = new GLTexture("GalagaAssets/PlayerShips.png", 0, 0, 60, 64);
+	mTexture = new AnimatedGLTexture("CarpathianSprites.png", 16, 0, 15, 16,4,0.5f, Animation::Layouts::Horizontal);
 	mTexture->Parent(this);
-	mTexture->Scale(Vec2_One*0.25f);
-	mTexture->Position(Vec2_Zero);
+	mTexture->Scale(Vec2_One*5.0f);
+	mTexture->Position(Vec2_Up * -(mTexture->ScaledDimensions().y / 2));
+
+	mCrouchTexture = new GLTexture("CarpathianSprites.png", 73, 3, 11, 13);
+	mCrouchTexture->Parent(this);
+	mCrouchTexture->Scale(Vec2_One*5.0f);
+	mCrouchTexture->Position(Vec2_Up* -(mCrouchTexture->ScaledDimensions().y / 2));
 
 	mMoveSpeed = 50.0f;
 	mMoveBounds = Vector2(0.0f + mTexture->ScaledDimensions().x/2, Graphics::SCREEN_WIDTH - mTexture->ScaledDimensions().x/2);
@@ -33,7 +40,7 @@ Player::Player() {
 		mBullets[i] = new Bullet(true);
 	}
 
-	AddCollider(new BoxCollider(Vector2(32.0f, 48.0f)), {0.0f,-24.0f});
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()-Vec2_Right*10.0f), Vec2_Up * -42.0f);
 
 	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Friendly);
 }
@@ -55,21 +62,25 @@ void Player::HandleMovement() {
 
 	mVelocity.y += sGravity * mTimer->DeltaTime();
 
-	if (mInput->KeyDown(SDL_SCANCODE_RIGHT)) {
+	if (mInput->KeyDown(SDL_SCANCODE_RIGHT) && !mCrouch) {
 		mVelocity += Vec2_Right * mMoveSpeed * mTimer->DeltaTime();
 	}
-	else if (mInput->KeyDown(SDL_SCANCODE_LEFT)) {
+	else if (mInput->KeyDown(SDL_SCANCODE_LEFT) && !mCrouch) {
 		mVelocity += -Vec2_Right * mMoveSpeed * mTimer->DeltaTime();
 	}
 
-	if (mInput->KeyDown(SDL_SCANCODE_C) && mGrounded) {
+	if (mInput->KeyDown(SDL_SCANCODE_C) && mGrounded && !mCrouch) {
 
 		mVelocity.y -= mJumpStrength;
 		mGrounded = false;
 
 	}
-	else if (mInput->KeyDown(SDL_SCANCODE_S)) {
-
+	 
+	if (mInput->KeyDown(SDL_SCANCODE_DOWN)) {
+		mCrouch = true;
+	}
+	else {
+		mCrouch = false;
 	}
 	
 	//drag
@@ -110,12 +121,16 @@ void Player::HandleFiring() {
 	}
 }
 
-void Player::Visible(bool visible) {
-	mVisible = visible;
-}
+void Player::TakeHit() {
+	mLives--;
+	if (mLives <= 0) {
+		//todo die
+		return;
+	}
+	mInvulnerable = true;
+	mInvulnerableTime = 0;
 
-bool Player::IsAnimating() {
-	return mAnimating;
+
 }
 
 int Player::Score() {
@@ -132,7 +147,7 @@ void Player::AddScore(int change) {
 
 bool Player::IgnoreCollisions()
 {
-	return !mVisible || mAnimating;
+	return  mInvulnerable || !Active();
 }
 
 void Player::Hit(PhysEntity * other) {
@@ -143,52 +158,47 @@ void Player::Hit(PhysEntity * other) {
 			mVelocity.y = 0.0f;
 			mGrounded = true;
 		}
-
-		
-		return;
-	}
-
-	if (dynamic_cast<Wall*>(other)) {
+	}else if (dynamic_cast<Wall*>(other)) {
 		if (Position().x > other->Position().x) {
 			mVelocity.x = 0.0f;
-			Position(other->Position().x + 38, Position().y); //todo kind of a magic number
+			Position(other->Position().x + ((mTexture->ScaledDimensions().x-10.0f) / 2) + (dynamic_cast<Wall*>(other)->Width() / 2), Position().y);//todo, box collider could do with some functions to get it's side.
 		}
 		else if (Position().x < other->Position().x) {
 			mVelocity.x = 0.0f;
-			Position(other->Position().x - 38, Position().y); //todo kind of a magic number
+			Position(other->Position().x - ((mTexture->ScaledDimensions().x - 10.0f) / 2) - (dynamic_cast<Wall*>(other)->Width() / 2), Position().y);
 		}
 	}
+	else if (false) {
+		//todo heart
+	}
+	else {
+		
+	}
 
-	//mLives -= 1;
-	//mAnimating = true;
-	//mAudio->PlaySFX("SFX/PlayerExplosion.wav");
-	//mWasHit = true;
-}
-
-bool Player::WasHit() {
-	return mWasHit;
+	
 }
 
 void Player::Update() {
-	if (mAnimating) {
+	
 
-		if (mWasHit) {
-			mWasHit = false;
+	if (Active()) {
+
+		if (abs(mVelocity.x) > 0.1f) {
+
+			mTexture->Update();
+
 		}
 
-	}
-	else {
-		if (Active()) {
-			HandleMovement();
-			if (mVelocity.x > 0) {
-				mFacingRight = true;
-			}
-			else if (mVelocity.x < 0) {
-				mFacingRight = false;
-			}
-			HandleFiring();
+		HandleMovement();
+		if (mVelocity.x > 0) {
+			mFacingRight = true;
 		}
+		else if (mVelocity.x < 0) {
+			mFacingRight = false;
+		}
+		HandleFiring();
 	}
+	
 
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		mBullets[i]->Update();
@@ -196,18 +206,21 @@ void Player::Update() {
 }
 
 void Player::Render() {
-	if (mVisible) {
-		if (mAnimating) {
+	if (Active()) {
+		if (mCrouch) {
+			mCrouchTexture->Render();
 		}
 		else {
 			mTexture->Render();
 		}
+		
+		PhysEntity::Render();
 	}
 
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		mBullets[i]->Render();
 	}
 
-	PhysEntity::Render();
+	
 	
 }

@@ -93,7 +93,7 @@ void PhysEntity::Render() {
 	}
 
 	if (mBroadPhaseCollider) {
-		mBroadPhaseCollider->Render();
+		//mBroadPhaseCollider->Render();
 	}
 
 	Graphics::Instance()->DrawLine(Position().x,Position().y,Position().x+100,Position().y+100);
