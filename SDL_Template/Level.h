@@ -7,6 +7,7 @@
 #include "Wall.h"
 #include "Bat.h"
 #include "Player.h"
+#include "Torch.h"
 
 using namespace SDLFramework;
 
@@ -29,7 +30,7 @@ private:
 	std::vector<Platform*> mPlatforms;
 	std::vector<Wall*> mWalls;
 
-	Bat* testBat;
+	std::vector<Enemy*> mEnemies;
 
 	Vector2 mPlayerStart;
 };

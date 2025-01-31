@@ -14,6 +14,8 @@ Bat::Bat(Vector2 pos, Player* player, bool left) : Enemy(new AnimatedGLTexture("
 
 	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
 
+	if (!mLeft) mTexture->Flip(true,false);
+
 }
 
 Bat::~Bat() {

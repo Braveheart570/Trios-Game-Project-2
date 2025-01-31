@@ -34,7 +34,8 @@ Level::Level(std::string texture, Player* player) {
 
 	mPlayer = player;
 
-	testBat = new Bat({ Graphics::SCREEN_WIDTH / 2,(Graphics::SCREEN_HEIGHT / 2) + 100 }, player, true);
+	mEnemies.push_back( new Bat({Graphics::SCREEN_WIDTH / 2,(Graphics::SCREEN_HEIGHT / 2) + 100}, mPlayer, true));
+	mEnemies.push_back(new Torch({ 440,500 }, mPlayer));
 }
 
 Level::~Level() {
@@ -51,10 +52,18 @@ Level::~Level() {
 		delete wall;
 		wall = nullptr;
 	}
+
+	for (auto e : mEnemies) {
+		delete e;
+		e = nullptr;
+	}
+
 }
 
 void Level::Update() {
-	testBat->Update();
+	for (auto e : mEnemies) {
+		e->Update();
+	}
 }
 
 void Level::Render() {
@@ -65,5 +74,7 @@ void Level::Render() {
 	for (auto wall : mWalls) {
 		wall->Render();
 	}
-	testBat->Render();
+	for (int c = 0; c < mEnemies.size(); c++) {
+		mEnemies[c]->Render();
+	}
 }

@@ -189,6 +189,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
+    <ClCompile Include="Torch.cpp" />
     <ClCompile Include="UIBar.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
@@ -227,6 +228,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="tinyxml2.h" />
+    <ClInclude Include="Torch.h" />
     <ClInclude Include="UIBar.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>

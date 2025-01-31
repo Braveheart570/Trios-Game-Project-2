@@ -36,7 +36,7 @@ void Enemy::Hit(PhysEntity* other) {
 		}
 		
 	}
-	else if (!dynamic_cast<Player*>(other)->Invulnerable()) {
+	else if (mDamageOnContact && !dynamic_cast<Player*>(other)->Invulnerable()) {
 		mPlayer->TakeHit();
 	}
 }
