@@ -10,7 +10,7 @@ PlayScreen::PlayScreen() {
 	mPlayer->Parent(this);
 	mPlayer->Position(mPlayerSpawn);
 
-	mUIBar = new UIBar();
+	mUIBar = new UIBar(mPlayer);
 	mUIBar->Parent(this);
 
 	mLevelIndex = 0;
@@ -77,6 +77,7 @@ void PlayScreen::Update() {
 
 	mLevels[mLevelIndex]->Update();
 	mPlayer->Update();
+	mUIBar->Update();
 }
 
 void PlayScreen::Render() {

@@ -1,17 +1,20 @@
 #include "UIBar.h"
 
-UIBar::UIBar() {
+UIBar::UIBar(Player* player) {
 
 	//todo the position of the uibar is technically zero, might be good to correct relative positions
+
+	mPlayer = player;
 
 	mLifeLabel = new GLTexture("life:", "pico-8-mono-upper.ttf", 20, { 255,204,170 });
 	mLifeLabel->Position({ 60,Graphics::SCREEN_HEIGHT - 30 });
 	mLifeLabel->Parent(this);
 
-	for (int c = 0; c < 10; c++) {
+	for (int c = 0; c < mPlayer->MaxHeath(); c++) {
 		mLifeIcons.push_back(new LifeIcon(110 + (c * 15), Graphics::SCREEN_HEIGHT - 30));
 		mLifeIcons[c]->Parent(this);
 	}
+	mDisplayedHealth = mPlayer->MaxHeath();
 
 	mScoreLabel = new GLTexture("score:", "pico-8-mono-upper.ttf", 20, { 255,204,170 });
 	mScoreLabel->Position(400, Graphics::SCREEN_HEIGHT - 30);
@@ -50,6 +53,19 @@ void UIBar::Render() {
 
 void UIBar::Update() {
 
-	
+	if (mPlayer->Health() == mDisplayedHealth) {
+		return;
+	}
+
+	mDisplayedHealth = mPlayer->Health();
+
+	for (int c = 0; c < mLifeIcons.size(); c++) {
+		if (c < mDisplayedHealth) {
+			mLifeIcons[c]->Active(true);
+		}
+		else {
+			mLifeIcons[c]->Active(false);
+		}
+	}
 
 }

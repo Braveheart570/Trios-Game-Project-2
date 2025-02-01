@@ -81,4 +81,8 @@ void Level::CollidersActive(bool active) {
 		w->Active(active);
 	}
 
+	for (auto e : mEnemies) {
+		e->Active(active);
+	}
+
 }

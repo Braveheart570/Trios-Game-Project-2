@@ -10,8 +10,8 @@ Player::Player() {
 	mAudio = AudioManager::Instance();
 
 	mScore = 0;
-	mMaxLives = 10;
-	mLives = mMaxLives;
+	mMaxHealth = 10;
+	mHealth = mMaxHealth;
 	mFacingRight = true;
 	mCrouch = false;
 
@@ -153,8 +153,8 @@ void Player::HandleFiring() {
 }
 
 void Player::TakeHit() {
-	mLives--;
-	if (mLives <= 0) {
+	mHealth--;
+	if (mHealth <= 0) {
 		//todo die
 		return;
 	}
@@ -169,7 +169,7 @@ int Player::Score() {
 }
 
 int Player::Lives() {
-	return mLives;
+	return mHealth;
 }
 
 void Player::AddScore(int change) {
@@ -307,4 +307,12 @@ void Player::Render() {
 
 bool Player::Invulnerable() {
 	return mInvulnerable;
+}
+
+int Player::MaxHeath() {
+	return mMaxHealth;
+}
+
+int Player::Health() {
+	return mHealth;
 }

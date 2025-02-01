@@ -16,8 +16,8 @@ private:
 	AudioManager * mAudio;
 
 	int mScore;
-	int mMaxLives;
-	int mLives;
+	int mMaxHealth;
+	int mHealth;
 	bool mFacingRight;
 	bool mCrouch;
 
@@ -75,5 +75,8 @@ public:
 
 	void TakeHit();
 	bool Invulnerable();
+
+	int MaxHeath();
+	int Health();
 };
 #endif
