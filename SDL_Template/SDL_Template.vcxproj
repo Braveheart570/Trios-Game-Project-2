@@ -162,6 +162,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="BezierPath.cpp" />
+    <ClCompile Include="Bone.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BoxCollider.cpp" />
     <ClCompile Include="Bullet.cpp" />
@@ -191,6 +192,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClCompile Include="Scoreboard.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="ShaderUtil.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="StartScreen.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -207,6 +209,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Bat.h" />
+    <ClInclude Include="Bone.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Bullet.h" />
@@ -238,6 +241,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="ShaderUtil.h" />
+    <ClInclude Include="Skeleton.h" />
     <ClInclude Include="StartScreen.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Timer.h" />

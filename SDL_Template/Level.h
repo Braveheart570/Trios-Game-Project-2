@@ -16,6 +16,7 @@
 #include "Mummy.h"
 #include "witch.h"
 #include "Boss.h"
+#include "Skeleton.h"
 
 using namespace SDLFramework;
 

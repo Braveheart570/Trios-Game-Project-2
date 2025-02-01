@@ -52,8 +52,8 @@ PlayScreen::PlayScreen() {
 
 	mLevels[0]->AddEnemy(new Bat({ 550,110 }, mPlayer));
 	mLevels[0]->AddEnemy(new RedBat({ 450,110 }, mPlayer, false));
-
 	mLevels[0]->AddEnemy(new Torch({500,500},mPlayer));
+	mLevels[0]->AddEnemy(new Skeleton({ 120,190 }, mPlayer));
 
 	mLevels[0]->CollidersActive(true);
 

@@ -8,7 +8,7 @@
 using namespace SDLFramework;
 
 class Bullet : public PhysEntity {
-private:
+protected:
 	static const int OFFSCREEN_BUFFER = 10;
 
 	Timer * mTimer;
@@ -19,9 +19,10 @@ private:
 
 	Vector2 mDir;
 
-private:
 	//Inherited from PhysEntity
 	bool IgnoreCollisions() override;
+
+	Bullet(AnimatedGLTexture* tex);
 
 public:
 	Bullet(bool friendly);

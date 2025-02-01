@@ -33,6 +33,24 @@ Bullet::Bullet(bool friendly) {
 	}
 }
 
+Bullet::Bullet(AnimatedGLTexture* tex) {
+	
+	mTimer = Timer::Instance();
+
+	mTexture = tex;
+	mTexture->Scale(Vec2_One * 5.0f);
+	mTexture->Parent(this);
+	
+	mSpeed = 500;
+
+	Reload();
+
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
+
+	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::HostileProjectiles);
+
+}
+
 Bullet::~Bullet() {
 	mTimer = nullptr;
 
@@ -70,7 +88,7 @@ void Bullet::Update() {
 
 
 		Vector2 pos = Position();
-		if (pos.x < -OFFSCREEN_BUFFER || pos.x > Graphics::SCREEN_WIDTH + OFFSCREEN_BUFFER) {
+		if (pos.x < -OFFSCREEN_BUFFER || pos.x > Graphics::SCREEN_WIDTH + OFFSCREEN_BUFFER || pos.y < -OFFSCREEN_BUFFER || pos.y > Graphics::SCREEN_HEIGHT + OFFSCREEN_BUFFER) {
 			Reload();
 		}
 	}
