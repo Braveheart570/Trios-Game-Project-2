@@ -24,6 +24,8 @@ private:
 	Player* mPlayer;
 	Vector2 mPlayerSpawn;
 
+	GLTexture* mGameOverTex;
+
 	static const int sTotalLevelCount = 16;
 	Level* mLevels[sTotalLevelCount];
 	int mLevelIndex;

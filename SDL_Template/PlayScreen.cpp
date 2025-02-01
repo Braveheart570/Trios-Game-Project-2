@@ -13,6 +13,12 @@ PlayScreen::PlayScreen() {
 	mUIBar = new UIBar(mPlayer);
 	mUIBar->Parent(this);
 
+	mGameOverTex = new GLTexture("GameOver.png");
+	mGameOverTex->Parent(this);
+	mGameOverTex->Scale(Vec2_One*5.0f);
+	mGameOverTex->Position(Graphics::SCREEN_WIDTH/2,Graphics::SCREEN_HEIGHT/2);
+
+
 	mLevelIndex = 0;
 
 	mLevels[0] = new Level("lvl1.png", mPlayer);
@@ -89,6 +95,9 @@ PlayScreen::~PlayScreen() {
 	delete mUIBar;
 	mUIBar = nullptr;
 
+	delete mGameOverTex;
+	mGameOverTex = nullptr;
+
 	for (int c = 0; c < sTotalLevelCount; c++) {
 		delete mLevels[c];
 		mLevels[c] = nullptr;
@@ -116,6 +125,8 @@ void PlayScreen::Render() {
 	mPlayer->Render();
 
 	mUIBar->Render();
+
+	if (mPlayer->Dead()) mGameOverTex->Render();
 
 }
 
