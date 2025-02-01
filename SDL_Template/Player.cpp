@@ -30,7 +30,7 @@ Player::Player() {
 	mVelocity = Vec2_Zero;
 	mGrounded = false;
 	
-	mTexture = new AnimatedGLTexture("CarpathianSprites.png", 16, 0, 15, 16,4,0.5f, Animation::Layouts::Horizontal);
+	mTexture = new AnimatedGLTexture("CarpathianSprites.png", 16, 0, 14, 16,4,0.5f, Animation::Layouts::Horizontal);
 	mTexture->Parent(this);
 	mTexture->Scale(Vec2_One*5.0f);
 	mTexture->Position(Vec2_Up * -(mTexture->ScaledDimensions().y / 2));
