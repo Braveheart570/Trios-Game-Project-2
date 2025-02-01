@@ -151,7 +151,7 @@ void Player::HandleFiring() {
 	if (mInput->KeyPressed(SDL_SCANCODE_X)) {
 		for (int i = 0; i < MAX_BULLETS; ++i) {
 			if (!mBullets[i]->Active()) {
-				mBullets[i]->Fire(Position()+Vec2_Up* -30, mFacingRight);
+				mBullets[i]->Fire(Position()+Vec2_Up* -30, mFacingRight ? Vec2_Right : -Vec2_Right);
 				mAudio->PlaySFX("SFX/Throw.wav");
 				mFiring = true;
 				break;

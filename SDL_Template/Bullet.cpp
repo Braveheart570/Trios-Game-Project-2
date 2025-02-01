@@ -40,9 +40,9 @@ Bullet::~Bullet() {
 	mTexture = nullptr;
 }
 
-void Bullet::Fire(Vector2 pos, bool right) {
-	mFireRight = right;
-	if (mFireRight) {
+void Bullet::Fire(Vector2 pos, Vector2 dir) {
+	mDir = dir.Normalized();
+	if (mDir.x >= 0) {
 		mTexture->Flip(false, false);
 	}
 	else {
@@ -66,13 +66,8 @@ void Bullet::Update() {
 
 		mTexture->Update();
 
-		if (mFireRight) {
-			Translate(Vec2_Right * mSpeed * mTimer->DeltaTime());
-		}
-		else {
-			Translate(-Vec2_Right * mSpeed * mTimer->DeltaTime());
-		}
-		
+		Translate(mDir * mSpeed * mTimer->DeltaTime());
+
 
 		Vector2 pos = Position();
 		if (pos.x < -OFFSCREEN_BUFFER || pos.x > Graphics::SCREEN_WIDTH + OFFSCREEN_BUFFER) {

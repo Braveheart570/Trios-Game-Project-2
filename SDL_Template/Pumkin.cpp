@@ -79,7 +79,7 @@ void Pumpkin::Fire() {
 	mFiring = true;
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		if (!mBullets[i]->Active()) {
-			mBullets[i]->Fire(Position() + Vec2_Up * -30, mFacingRight);
+			mBullets[i]->Fire(Position() + Vec2_Up * -30,  mFacingRight ? Vec2_Right : -Vec2_Right);
 			break;
 		}
 	}

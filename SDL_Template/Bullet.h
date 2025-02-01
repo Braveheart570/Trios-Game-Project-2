@@ -17,7 +17,7 @@ private:
 
 	float mSpeed;
 
-	bool mFireRight;
+	Vector2 mDir;
 
 private:
 	//Inherited from PhysEntity
@@ -27,7 +27,7 @@ public:
 	Bullet(bool friendly);
 	~Bullet();
 
-	void Fire(Vector2 pos, bool right);
+	void Fire(Vector2 pos, Vector2 dir);
 	void Reload();
 
 	// Inherited from PhysEntity
