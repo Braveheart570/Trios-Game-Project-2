@@ -1,7 +1,7 @@
 #pragma once
-#include "Enemy.h"
+#include "Zombie.h"
 
-class Fishman : public Enemy {
+class Fishman : public Zombie {
 
 public:
 
@@ -12,11 +12,6 @@ public:
 	void Render() override;
 
 private:
-
-	const int mWanderDist = 100;
-	int nWanderXRight;
-	int mWanderXLeft;
-	bool mFacingRight;
 
 	int mYTrigger;
 	int mPlayerOriginOffset;
