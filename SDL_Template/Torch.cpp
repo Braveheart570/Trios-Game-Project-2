@@ -1,6 +1,6 @@
 #include "Torch.h"
 
-Torch::Torch(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("carpathianSprites.png",1,43,8,8,3,0.7f,Animation::Layouts::Horizontal),player, 100) {
+Torch::Torch(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("carpathianSprites.png",0,61,9,8,4,0.7f,Animation::Layouts::Horizontal),player, 100) {
 	mDamageOnContact = false;
 
 	Position(pos);
