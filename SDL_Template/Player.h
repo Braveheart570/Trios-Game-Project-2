@@ -21,6 +21,10 @@ private:
 	bool mFacingRight;
 	bool mCrouch;
 
+	bool mVisable;
+	float mFlashTime;
+	float mFlashInterval;
+
 	bool mFiring;
 	float mFireTime;
 	float mFireDur;

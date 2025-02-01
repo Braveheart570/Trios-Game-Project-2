@@ -15,6 +15,10 @@ Player::Player() {
 	mFacingRight = true;
 	mCrouch = false;
 
+	mVisable = true;
+	mFlashTime = 0.0f;
+	mFlashInterval = 0.2f;
+
 	mFiring = false;
 	mFireTime = 0.0f;
 	mFireDur = 0.15f;
@@ -252,6 +256,15 @@ void Player::Update() {
 		if (mInvulnerableTime >= mInvulnerableDur) {
 			mInvulnerable = false;
 			mInvulnerableTime = 0.0f;
+			mVisable = true;
+			mFlashTime = 0.0f;
+		}
+		else {
+			mFlashTime += mTimer->DeltaTime();
+			if (mFlashTime >= mFlashInterval) {
+				mVisable = !mVisable;
+				mFlashTime = 0.0f;
+			}
 		}
 	}
 
@@ -261,27 +274,25 @@ void Player::Update() {
 }
 
 void Player::Render() {
-	if (Active()) {
-		if (!mInvulnerable) {
-			if (mCrouch) {
-				if (mFiring) {
-					mCrouchFireTexture->Render();
-				}
-				else {
-					mCrouchTexture->Render();
-				}
+	if (Active() && mVisable) {
 
+		if (mCrouch) {
+			if (mFiring) {
+				mCrouchFireTexture->Render();
 			}
 			else {
-				if (mFiring) {
-					mFiringTexture->Render();
-				}
-				else {
-					mTexture->Render();
-				}
+				mCrouchTexture->Render();
+			}
+
+		}
+		else {
+			if (mFiring) {
+				mFiringTexture->Render();
+			}
+			else {
+				mTexture->Render();
 			}
 		}
-		
 		
 		PhysEntity::Render();
 	}
