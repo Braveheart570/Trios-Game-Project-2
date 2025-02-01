@@ -5,7 +5,7 @@ Torch::Torch(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("carpath
 
 	Position(pos);
 
-	AddCollider(new BoxCollider({ 30,30 }));
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
 
 	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
 

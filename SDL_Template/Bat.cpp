@@ -10,7 +10,7 @@ Bat::Bat(Vector2 pos, Player* player, bool left) : Enemy(new AnimatedGLTexture("
 	mTrackingPlayer = false;
 	mPlayerOriginOffset = -30;
 
-	AddCollider(new BoxCollider({30,30}));
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
 
 	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
 

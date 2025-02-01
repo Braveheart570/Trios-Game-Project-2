@@ -9,7 +9,7 @@ Zombie::Zombie(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("Carpa
 
 	mFacingRight = false;
 
-	AddCollider(new BoxCollider({ 30,30 }));
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
 
 	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
 
