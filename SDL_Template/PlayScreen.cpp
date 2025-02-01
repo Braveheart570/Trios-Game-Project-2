@@ -80,6 +80,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[1]->AddEnemy(new Fishman({ 500,510 }, mPlayer));
 	mLevels[1]->AddEnemy(new Zombie({ 200,100 }, mPlayer));
+	mLevels[1]->AddEnemy(new Pumpkin({ 320,510 }, mPlayer));
 
 	mLevels[1]->CollidersActive(false);
 

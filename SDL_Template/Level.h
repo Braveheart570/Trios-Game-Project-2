@@ -11,6 +11,7 @@
 #include "Zombie.h"
 #include "Fishman.h"
 #include "heart.h"
+#include "Pumpkin.h"
 
 using namespace SDLFramework;
 
