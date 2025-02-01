@@ -6,6 +6,8 @@ UIBar::UIBar(Player* player) {
 
 	mPlayer = player;
 
+	mKnownScore = mPlayer->Score();
+
 	mLifeLabel = new GLTexture("life:", "pico-8-mono-upper.ttf", 20, { 255,204,170 });
 	mLifeLabel->Position({ 60,Graphics::SCREEN_HEIGHT - 30 });
 	mLifeLabel->Parent(this);
@@ -21,7 +23,7 @@ UIBar::UIBar(Player* player) {
 	mScoreLabel->Parent(this);
 
 	mScoreboard = new Scoreboard({ 255,204,170 });
-	mScoreboard->Position(510, Graphics::SCREEN_HEIGHT - 30);
+	mScoreboard->Position(550, Graphics::SCREEN_HEIGHT - 30);
 	mScoreboard->Parent(this);
 
 }
@@ -53,19 +55,25 @@ void UIBar::Render() {
 
 void UIBar::Update() {
 
-	if (mPlayer->Health() == mDisplayedHealth) {
-		return;
+	if (mPlayer->Score() != mKnownScore) {
+		mKnownScore = mPlayer->Score();
+		mScoreboard->Score(mKnownScore);
 	}
 
-	mDisplayedHealth = mPlayer->Health();
 
-	for (int c = 0; c < mLifeIcons.size(); c++) {
-		if (c < mDisplayedHealth) {
-			mLifeIcons[c]->Active(true);
-		}
-		else {
-			mLifeIcons[c]->Active(false);
+	if (mPlayer->Health() != mDisplayedHealth) {
+		mDisplayedHealth = mPlayer->Health();
+
+		for (int c = 0; c < mLifeIcons.size(); c++) {
+			if (c < mDisplayedHealth) {
+				mLifeIcons[c]->Active(true);
+			}
+			else {
+				mLifeIcons[c]->Active(false);
+			}
 		}
 	}
+
+	
 
 }

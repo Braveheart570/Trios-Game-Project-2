@@ -58,7 +58,7 @@ Player::Player() {
 	mCrouchFireTexture->Position(Vec2_Up * -(mCrouchFireTexture->ScaledDimensions().y / 2));
 
 	mMoveSpeed = 50.0f;
-	mMoveBounds = Vector2(0.0f + mTexture->ScaledDimensions().x/2, Graphics::SCREEN_WIDTH - mTexture->ScaledDimensions().x/2);
+	mMoveBounds = Vector2(0.0f - mTexture->ScaledDimensions().x, Graphics::SCREEN_WIDTH + mTexture->ScaledDimensions().x);
 
 
 	for (int i = 0; i < MAX_BULLETS; ++i) {
@@ -137,10 +137,10 @@ void Player::HandleMovement() {
 
 	Vector2 pos = Position(Local);
 	if (pos.x < mMoveBounds.x) {
-		pos.x = mMoveBounds.x;
+		pos.x = mMoveBounds.y;
 	}
 	else if (pos.x > mMoveBounds.y) {
-		pos.x = mMoveBounds.y;
+		pos.x = mMoveBounds.x;
 	}
 
 	Position(pos);

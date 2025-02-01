@@ -1,6 +1,6 @@
 #include "Fishman.h"
 
-Fishman::Fishman(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("CarpathianSprites.png", 100, 0, 16, 16, 2, 0.75f, Animation::Layouts::Horizontal), player, 300){
+Fishman::Fishman(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("CarpathianSprites.png", 100, 0, 16, 16, 2, 0.75f, Animation::Layouts::Horizontal), player, 400, 3){
 
 	Position(pos);
 

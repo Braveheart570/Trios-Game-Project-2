@@ -1,6 +1,6 @@
 #include "Zombie.h"
 
-Zombie::Zombie(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("CarpathianSprites.png",133,0,16,16,2,0.75f,Animation::Layouts::Horizontal),player,300) {
+Zombie::Zombie(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("CarpathianSprites.png",133,0,16,16,2,0.75f,Animation::Layouts::Horizontal),player,200,3) {
 	
 	Position(pos);
 

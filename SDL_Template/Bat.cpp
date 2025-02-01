@@ -1,7 +1,7 @@
 #include "Bat.h"
 
 
-Bat::Bat(Vector2 pos, Player* player, bool left) : Enemy(new AnimatedGLTexture("CarpathianSprites.png",1,43,8,8,3,0.7f,Animation::Layouts::Horizontal), player,100) {
+Bat::Bat(Vector2 pos, Player* player, bool left) : Enemy(new AnimatedGLTexture("CarpathianSprites.png",1,43,8,8,3,0.7f,Animation::Layouts::Horizontal), player,200) {
 
 	Position(pos);
 	mLeft = left;

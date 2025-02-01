@@ -21,6 +21,7 @@ private:
 	std::vector<LifeIcon*> mLifeIcons;
 
 	int mDisplayedHealth;
+	int mKnownScore;
 
 	GLTexture* mScoreLabel;
 	Scoreboard* mScoreboard;

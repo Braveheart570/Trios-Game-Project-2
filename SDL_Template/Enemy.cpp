@@ -32,6 +32,7 @@ void Enemy::Hit(PhysEntity* other) {
 	if (dynamic_cast<Bullet*>(other)) {
 		mHealth--;
 		if (mHealth <= 0) {
+			mPlayer->AddScore(mPts);
 			Active(false);
 		}
 		

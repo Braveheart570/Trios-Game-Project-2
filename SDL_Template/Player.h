@@ -17,6 +17,7 @@ private:
 	AudioManager * mAudio;
 
 	int mScore;
+
 	int mMaxHealth;
 	int mHealth;
 	bool mFacingRight;
