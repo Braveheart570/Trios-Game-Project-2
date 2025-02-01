@@ -18,6 +18,24 @@ Bat::Bat(Vector2 pos, Player* player, bool left) : Enemy(new AnimatedGLTexture("
 
 }
 
+Bat::Bat(AnimatedGLTexture* tex, Vector2 pos, Player* player, bool left) : Enemy(tex, player, 200) {
+
+	Position(pos);
+	mLeft = left;
+
+	mYTrigger = 200;
+	mTrackingPlayer = false;
+	mPlayerOriginOffset = -30;
+
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
+
+	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
+
+	if (!mLeft) mTexture->Flip(true, false);
+
+}
+
+
 Bat::~Bat() {
 	
 }

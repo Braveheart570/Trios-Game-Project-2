@@ -51,7 +51,7 @@ PlayScreen::PlayScreen() {
 	mLevels[0]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
 
 	mLevels[0]->AddEnemy(new Bat({ 550,110 }, mPlayer));
-	mLevels[0]->AddEnemy(new Bat({ 450,110 }, mPlayer, false));
+	mLevels[0]->AddEnemy(new RedBat({ 450,110 }, mPlayer, false));
 
 	mLevels[0]->AddEnemy(new Torch({500,500},mPlayer));
 

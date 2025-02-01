@@ -12,6 +12,7 @@
 #include "Fishman.h"
 #include "heart.h"
 #include "Pumpkin.h"
+#include "RedBat.h"
 
 using namespace SDLFramework;
 
