@@ -21,6 +21,7 @@ Heart::~Heart() {
 
 void Heart::Spawn(Vector2 pos) {
 	Active(true);
+	AudioManager::Instance()->PlaySFX("SFX/HeartSpawn.wav");
 	Position(pos);
 }
 
@@ -31,5 +32,6 @@ void Heart::Render() {
 }
 
 void Heart::Hit(PhysEntity* other) {
+	AudioManager::Instance()->PlaySFX("SFX/HeartGotten.wav");
 	Active(false);
 }

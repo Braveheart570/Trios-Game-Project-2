@@ -11,7 +11,7 @@ Player::Player() {
 
 	mScore = 0;
 	mMaxHealth = 10;
-	mHealth = 1;
+	mHealth = mMaxHealth;
 	mFacingRight = true;
 	mCrouch = false;
 
@@ -108,6 +108,7 @@ void Player::HandleMovement() {
 
 	if (mInput->KeyDown(SDL_SCANCODE_C) && mGrounded && !mCrouch) {
 
+		mAudio->PlaySFX("SFX/Jump.wav");
 		mVelocity.y -= mJumpStrength;
 		mGrounded = false;
 
@@ -151,7 +152,7 @@ void Player::HandleFiring() {
 		for (int i = 0; i < MAX_BULLETS; ++i) {
 			if (!mBullets[i]->Active()) {
 				mBullets[i]->Fire(Position()+Vec2_Up* -30, mFacingRight);
-				//mAudio->PlaySFX("SFX/Fire.wav");
+				mAudio->PlaySFX("SFX/Throw.wav");
 				mFiring = true;
 				break;
 			}
@@ -160,6 +161,7 @@ void Player::HandleFiring() {
 }
 
 void Player::TakeHit() {
+	mAudio->PlaySFX("SFX/TakeDamage.wav");
 	mHealth--;
 	if (mHealth <= 0) {
 		//todo die
@@ -222,6 +224,8 @@ void Player::Hit(PhysEntity * other) {
 void Player::Update() {
 	
 	if (!mDead && mHealth <= 0) {
+		mAudio->PauseMusic();
+		mAudio->PlaySFX("SFX/Die.wav");
 		mDead = true;
 	}
 

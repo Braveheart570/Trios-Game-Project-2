@@ -83,6 +83,8 @@ PlayScreen::PlayScreen() {
 
 	mLevels[1]->CollidersActive(false);
 
+	mAudio->PlayMusic("Music/LevelMusic.wav");
+
 }
 
 PlayScreen::~PlayScreen() {

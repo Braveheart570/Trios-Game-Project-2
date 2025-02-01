@@ -25,7 +25,7 @@ void Enemy::Render() {
 		return;
 	}
 	mTexture->Render();
-	mColliders[0]->Render();
+	PhysEntity::Render();
 }
 
 void Enemy::Hit(PhysEntity* other) {
@@ -33,6 +33,7 @@ void Enemy::Hit(PhysEntity* other) {
 		mHealth--;
 		if (mHealth <= 0) {
 			mPlayer->AddScore(mPts);
+			AudioManager::Instance()->PlaySFX("SFX/Kill.wav");
 			Active(false);
 		}
 		

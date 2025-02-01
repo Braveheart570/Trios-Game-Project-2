@@ -3,6 +3,7 @@
 #include "PhysEntity.h"
 #include "Timer.h"
 #include "AnimatedGLTexture.h"
+#include "AudioManager.h"
 
 using namespace SDLFramework;
 

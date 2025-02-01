@@ -23,7 +23,7 @@ UIBar::UIBar(Player* player) {
 	mScoreLabel->Parent(this);
 
 	mScoreboard = new Scoreboard({ 255,204,170 });
-	mScoreboard->Position(550, Graphics::SCREEN_HEIGHT - 30);
+	mScoreboard->Position(600, Graphics::SCREEN_HEIGHT - 30);
 	mScoreboard->Parent(this);
 
 }

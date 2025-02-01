@@ -32,7 +32,7 @@ void LifeIcon::Init() {
 	mActiveTex->Position(Vec2_Zero);
 	mActiveTex->Scale(Vec2_One*5.0f);
 
-	mInactiveTex = new GLTexture("CarpathianSprites.png", 3, 27, 2, 5);
+	mInactiveTex = new GLTexture("CarpathianSprites.png", 2, 27, 2, 5);
 	mInactiveTex->Parent(this);
 	mInactiveTex->Position(Vec2_Zero);
 	mInactiveTex->Scale(Vec2_One * 5.0f);

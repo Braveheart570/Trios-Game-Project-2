@@ -23,7 +23,6 @@ void ScreenManager::Update() {
 
 		if (mInput->KeyPressed(SDL_SCANCODE_X)) {
 			mCurrentScreen = Play;
-			mStartScreen->ResetAnimation();
 			AudioManager::Instance()->PauseMusic();
 			AudioManager::Instance()->PlaySFX("SFX/startSound.wav");
 			mPlayScreen = new PlayScreen();
@@ -34,6 +33,7 @@ void ScreenManager::Update() {
 			if (mInput->KeyPressed(SDL_SCANCODE_X)) {
 				mCurrentScreen = Start;
 				delete mPlayScreen;
+				mStartScreen->ResetAnimation();
 				
 			}
 		}

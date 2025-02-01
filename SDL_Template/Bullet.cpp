@@ -57,6 +57,7 @@ void Bullet::Reload() {
 }
 
 void Bullet::Hit(PhysEntity * other) {
+	AudioManager::Instance()->PlaySFX("SFX/Hit.wav");
 	Reload();
 }
 

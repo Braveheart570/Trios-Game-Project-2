@@ -2,6 +2,7 @@
 #include "PhysEntity.h"
 #include "BoxCollider.h"
 #include "PhysicsManager.h"
+#include "AudioManager.h"
 
 class Heart : public PhysEntity {
 
