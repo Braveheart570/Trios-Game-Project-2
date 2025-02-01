@@ -96,5 +96,5 @@ void PhysEntity::Render() {
 		//mBroadPhaseCollider->Render();
 	}
 
-	Graphics::Instance()->DrawLine(Position().x,Position().y,Position().x+100,Position().y+100);
+	//Graphics::Instance()->DrawLine(Position().x,Position().y,Position().x+100,Position().y+100);
 }
