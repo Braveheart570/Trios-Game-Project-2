@@ -15,6 +15,21 @@ Zombie::Zombie(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("Carpa
 
 }
 
+Zombie::Zombie(AnimatedGLTexture* tex, Vector2 pos, Player* player) : Enemy(tex, player, 200, 3) {
+
+	Position(pos);
+
+	nWanderXRight = pos.y + mWanderDist;
+	mWanderXLeft = pos.x - mWanderDist;
+
+	mFacingRight = false;
+
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
+
+	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
+
+}
+
 Zombie::~Zombie() {
 
 }

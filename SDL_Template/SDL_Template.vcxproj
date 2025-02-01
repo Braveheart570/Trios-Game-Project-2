@@ -176,6 +176,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClCompile Include="Heart.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="Mummy.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="LifeIcon.cpp" />
     <ClCompile Include="main.cpp" />
@@ -218,6 +219,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClInclude Include="BezierPath.h" />
     <ClInclude Include="Heart.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="Mummy.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="LifeIcon.h" />
     <ClInclude Include="InputManager.h" />

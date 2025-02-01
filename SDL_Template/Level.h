@@ -13,6 +13,7 @@
 #include "heart.h"
 #include "Pumpkin.h"
 #include "RedBat.h"
+#include "Mummy.h"
 
 using namespace SDLFramework;
 

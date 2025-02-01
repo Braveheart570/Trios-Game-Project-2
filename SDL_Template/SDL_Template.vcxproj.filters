@@ -183,6 +183,9 @@
     <ClCompile Include="RedBat.cpp">
       <Filter>Source Files\Game\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Mummy.cpp">
+      <Filter>Source Files\Game\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -309,6 +312,9 @@
       <Filter>Header Files\Game\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="RedBat.h">
+      <Filter>Header Files\Game\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Mummy.h">
       <Filter>Header Files\Game\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

@@ -80,9 +80,18 @@ PlayScreen::PlayScreen() {
 
 	mLevels[1]->AddEnemy(new Fishman({ 500,510 }, mPlayer));
 	mLevels[1]->AddEnemy(new Zombie({ 200,100 }, mPlayer));
-	mLevels[1]->AddEnemy(new Pumpkin({ 320,510 }, mPlayer));
+	mLevels[1]->AddEnemy(new Pumpkin({ 120,510 }, mPlayer));
 
 	mLevels[1]->CollidersActive(false);
+
+
+	mLevels[2] = new Level("sky.png", mPlayer);
+
+	mLevels[2]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
+
+	mLevels[2]->AddEnemy(new Mummy({ 320,500 },mPlayer));
+
+	mLevels[2]->CollidersActive(false);
 
 	mAudio->PlayMusic("Music/LevelMusic.wav");
 
@@ -135,7 +144,7 @@ void PlayScreen::Render() {
 
 void PlayScreen::NextLevel() {
 
-	if (mLevelIndex >= 1) {// todo temp
+	if (mLevelIndex >= 2) {// todo temp
 		std::cout << "end of testing levels" << std::endl;
 		return;
 	}
