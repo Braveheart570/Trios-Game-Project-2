@@ -199,8 +199,8 @@ void Player::Hit(PhysEntity * other) {
 			Position(other->Position().x - ((mTexture->ScaledDimensions().x - 10.0f) / 2) - (dynamic_cast<Wall*>(other)->Width() / 2), Position().y);
 		}
 	}
-	else if (false) {
-		//todo heart
+	else if (dynamic_cast<Heart*>(other) && mHealth < mMaxHealth) {
+		mHealth++;
 	}
 	else if (dynamic_cast<Bullet*>(other) && !mInvulnerable) {
 		TakeHit();

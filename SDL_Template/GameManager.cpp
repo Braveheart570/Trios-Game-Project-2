@@ -72,11 +72,12 @@ namespace SDLFramework {
 		mScreenManager = ScreenManager::Instance();
 		mPhysicsManager = PhysicsManager::Instance();
 
-		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::Friendly, PhysicsManager::CollisionFlags::Hostile | PhysicsManager::CollisionFlags::HostileProjectiles | PhysicsManager::CollisionFlags::Level);
+		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::Friendly, PhysicsManager::CollisionFlags::Hostile | PhysicsManager::CollisionFlags::HostileProjectiles | PhysicsManager::CollisionFlags::Level | PhysicsManager::CollisionFlags::Consumable);
 		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::FriendlyProjectiles, PhysicsManager::CollisionFlags::Hostile);
 		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::Hostile, PhysicsManager::CollisionFlags::Friendly | PhysicsManager::CollisionFlags::FriendlyProjectiles);
 		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::HostileProjectiles, PhysicsManager::CollisionFlags::Friendly);
 		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::Level, PhysicsManager::CollisionFlags::Friendly);
+		mPhysicsManager->SetLayerCollisionMask(PhysicsManager::CollisionLayers::Consumable, PhysicsManager::CollisionFlags::Friendly);
 
 		
 	}

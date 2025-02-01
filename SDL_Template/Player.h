@@ -6,6 +6,7 @@
 #include "Bullet.h"
 #include "Platform.h"
 #include "wall.h"
+#include "heart.h"
 
 using namespace SDLFramework;
 
@@ -49,7 +50,7 @@ private:
 	float mMoveSpeed;
 	Vector2 mMoveBounds;
 
-	static const int MAX_BULLETS = 2;
+	static const int MAX_BULLETS = 20;
 	Bullet * mBullets[MAX_BULLETS];
 
 private:

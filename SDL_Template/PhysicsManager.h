@@ -11,6 +11,7 @@ public:
 		Hostile,
 		HostileProjectiles,
 		Level,
+		Consumable,
 		MaxLayers
 	};
 
@@ -21,6 +22,7 @@ public:
 		Hostile				= 0x04,
 		HostileProjectiles	= 0x08,
 		Level				= 0x10,
+		Consumable			= 0x20
 	};
 
 private:

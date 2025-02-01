@@ -173,6 +173,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClCompile Include="GLGraphics.cpp" />
     <ClCompile Include="GLTexture.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Heart.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Platform.cpp" />
@@ -213,6 +214,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClInclude Include="GLTexture.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="BezierPath.h" />
+    <ClInclude Include="Heart.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="LifeIcon.h" />

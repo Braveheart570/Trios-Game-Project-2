@@ -10,6 +10,7 @@
 #include "Torch.h"
 #include "Zombie.h"
 #include "Fishman.h"
+#include "heart.h"
 
 using namespace SDLFramework;
 
@@ -41,6 +42,9 @@ private:
 	std::vector<Wall*> mWalls;
 
 	std::vector<Enemy*> mEnemies;
+
+	static const int MAX_HEARTS = 4;
+	Heart* mHearts[MAX_HEARTS];
 
 	Vector2 mPlayerStart;
 };
