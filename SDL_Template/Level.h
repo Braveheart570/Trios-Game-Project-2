@@ -15,6 +15,7 @@
 #include "RedBat.h"
 #include "Mummy.h"
 #include "witch.h"
+#include "Boss.h"
 
 using namespace SDLFramework;
 

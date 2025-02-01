@@ -94,6 +94,15 @@ PlayScreen::PlayScreen() {
 
 	mLevels[2]->CollidersActive(false);
 
+
+
+	mLevels[3] = new Level("sky.png", mPlayer);
+
+	mLevels[3]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
+	mLevels[3]->AddEnemy(new Boss({320,320},mPlayer));
+
+	mLevels[3]->CollidersActive(false);
+
 	mAudio->PlayMusic("Music/LevelMusic.wav");
 
 }
@@ -145,7 +154,7 @@ void PlayScreen::Render() {
 
 void PlayScreen::NextLevel() {
 
-	if (mLevelIndex >= 2) {// todo temp
+	if (mLevelIndex >= 3) {// todo temp
 		std::cout << "end of testing levels" << std::endl;
 		return;
 	}

@@ -18,7 +18,7 @@ protected:
 	int mYTrigger;
 	int mPlayerOriginOffset;
 
-	bool mFiring = true;
+	bool mFiring;
 	float mFireTexTime;
 	float mFireTexDur;
 

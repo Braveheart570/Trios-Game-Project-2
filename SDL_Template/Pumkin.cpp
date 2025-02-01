@@ -61,6 +61,11 @@ Pumpkin::Pumpkin(GLTexture* tex, GLTexture* firTex, Vector2 pos, Player* player)
 Pumpkin::~Pumpkin() {
 	delete mFiringTex;
 	mFiringTex = nullptr;
+
+	for (int i = 0; i < MAX_BULLETS; ++i) {
+		delete mBullets[i];
+		mBullets[i] = nullptr;
+	}
 }
 
 void Pumpkin::Update() {
@@ -115,6 +120,10 @@ void Pumpkin::Fire() {
 
 void Pumpkin::Render() {
 
+	for (int i = 0; i < MAX_BULLETS; ++i) {
+		mBullets[i]->Render();
+	}
+
 	if (!Active()) {
 		return;
 	}
@@ -128,8 +137,6 @@ void Pumpkin::Render() {
 	PhysEntity::Render();
 
 
-	for (int i = 0; i < MAX_BULLETS; ++i) {
-		mBullets[i]->Render();
-	}
+	
 
 }

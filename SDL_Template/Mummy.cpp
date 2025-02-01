@@ -16,7 +16,10 @@ Mummy::Mummy(Vector2 pos, Player* player) : Zombie(new AnimatedGLTexture("Carpat
 }
 
 Mummy::~Mummy() {
-
+	for (int i = 0; i < MAX_BULLETS; ++i) {
+		delete mBullets[i];
+		mBullets[i] = nullptr;
+	}
 }
 
 void Mummy::Update() {

@@ -26,7 +26,10 @@ Fishman::Fishman(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("Car
 }
 
 Fishman::~Fishman() {
-
+	for (int i = 0; i < MAX_BULLETS; ++i) {
+		delete mBullets[i];
+		mBullets[i] = nullptr;
+	}
 }
 
 void Fishman::Update() {
