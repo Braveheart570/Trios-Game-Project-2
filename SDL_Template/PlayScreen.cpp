@@ -133,6 +133,12 @@ void PlayScreen::Render() {
 }
 
 void PlayScreen::NextLevel() {
+
+	if (mLevelIndex >= 1) {// todo temp
+		std::cout << "end of testing levels" << std::endl;
+		return;
+	}
+
 	mLevels[mLevelIndex]->CollidersActive(false);
 	mLevelIndex++;
 	mLevels[mLevelIndex]->CollidersActive(true);
