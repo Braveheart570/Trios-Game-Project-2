@@ -52,6 +52,12 @@
     <Filter Include="Source Files\Game\Managers">
       <UniqueIdentifier>{30a70e44-c109-4656-952e-9c23245b1f1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Enemies">
+      <UniqueIdentifier>{e4330c7b-b44c-44e3-b670-dad8a0ac8d52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Enemies">
+      <UniqueIdentifier>{6270d7ae-81ef-42aa-bb73-4a00d4ad5239}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -153,11 +159,20 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Bat.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="Wall.cpp">
       <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch.cpp">
+      <Filter>Source Files\Game\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Source Files\Game\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Fishman.cpp">
+      <Filter>Source Files\Game\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Source Files\Game\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -266,8 +281,17 @@
     <ClInclude Include="Wall.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Header Files\Game\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch.h">
+      <Filter>Header Files\Game\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Fishman.h">
+      <Filter>Header Files\Game\Enemies</Filter>
+    </ClInclude>
     <ClInclude Include="Bat.h">
-      <Filter>Header Files\Game</Filter>
+      <Filter>Header Files\Game\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
