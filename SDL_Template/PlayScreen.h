@@ -15,8 +15,7 @@ public:
 	void Update() override;
 	void Render() override;
 
-	void Reset();
-
+	bool GameOver();
 
 private:
 	Timer* mTimer;

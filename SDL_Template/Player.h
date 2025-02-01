@@ -22,6 +22,8 @@ private:
 	bool mFacingRight;
 	bool mCrouch;
 
+	bool mDead;
+
 	bool mVisable;
 	float mFlashTime;
 	float mFlashInterval;
@@ -79,5 +81,7 @@ public:
 
 	int MaxHeath();
 	int Health();
+
+	bool Dead();
 };
 #endif

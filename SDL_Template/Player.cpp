@@ -11,7 +11,7 @@ Player::Player() {
 
 	mScore = 0;
 	mMaxHealth = 10;
-	mHealth = mMaxHealth;
+	mHealth = 1;
 	mFacingRight = true;
 	mCrouch = false;
 
@@ -22,6 +22,8 @@ Player::Player() {
 	mFiring = false;
 	mFireTime = 0.0f;
 	mFireDur = 0.15f;
+
+	mDead = false;
 
 	mInvulnerable = false;
 	mInvulnerableTime = 0.0f;
@@ -39,6 +41,11 @@ Player::Player() {
 	mCrouchTexture->Parent(this);
 	mCrouchTexture->Scale(Vec2_One*5.0f);
 	mCrouchTexture->Position(Vec2_Up* -(mCrouchTexture->ScaledDimensions().y / 2));
+
+	mDeadTexture = new GLTexture("CarpathianSprites.png", 17, 17, 16, 8);
+	mDeadTexture->Parent(this);
+	mDeadTexture->Scale(Vec2_One*5.0f);
+	mDeadTexture->Position(Vec2_Up * -(mDeadTexture->ScaledDimensions().y / 2));
 
 	mFiringTexture = new GLTexture("CarpathianSprites.png",0,0,15,16);
 	mFiringTexture->Parent(this);
@@ -214,8 +221,12 @@ void Player::Hit(PhysEntity * other) {
 
 void Player::Update() {
 	
+	if (!mDead && mHealth <= 0) {
+		mDead = true;
+	}
 
-	if (Active()) {
+
+	if (Active() && !mDead) {
 
 		if (abs(mVelocity.x) > 0.1f) {
 
@@ -231,7 +242,6 @@ void Player::Update() {
 			if (mCrouchTexture->Flipped()) mCrouchTexture->Flip(false, false);
 			if (mFiringTexture->Flipped()) mFiringTexture->Flip(false, false);
 			if (mCrouchFireTexture->Flipped()) mCrouchFireTexture->Flip(false, false);
-			//if (mDeadTexture->Flipped()) mDeadTexture->Flip(false, false);
 		}
 		else if (mVelocity.x < 0) {
 			mFacingRight = false;
@@ -239,7 +249,6 @@ void Player::Update() {
 			if (!mCrouchTexture->Flipped()) mCrouchTexture->Flip(true, false);
 			if (!mFiringTexture->Flipped()) mFiringTexture->Flip(true, false);
 			if (!mCrouchFireTexture->Flipped()) mCrouchFireTexture->Flip(true, false);
-			//if (!mDeadTexture->Flipped()) mDeadTexture->Flip(true, false);
 		}
 		HandleFiring();
 	}
@@ -274,7 +283,20 @@ void Player::Update() {
 }
 
 void Player::Render() {
-	if (Active() && mVisable) {
+	
+	for (int i = 0; i < MAX_BULLETS; ++i) {
+		mBullets[i]->Render();
+	}
+
+	if (!Active()) {
+		return;
+	}
+
+	if (mDead) {
+		mDeadTexture->Render();
+
+	}
+	else if (mVisable) {
 
 		if (mCrouch) {
 			if (mFiring) {
@@ -297,10 +319,6 @@ void Player::Render() {
 		PhysEntity::Render();
 	}
 
-	for (int i = 0; i < MAX_BULLETS; ++i) {
-		mBullets[i]->Render();
-	}
-
 	
 	
 }
@@ -315,4 +333,8 @@ int Player::MaxHeath() {
 
 int Player::Health() {
 	return mHealth;
+}
+
+bool Player::Dead() {
+	return mDead;
 }

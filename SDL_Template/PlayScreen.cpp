@@ -49,8 +49,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[0]->AddEnemy(new Torch({500,500},mPlayer));
 
-
-
+	mLevels[0]->CollidersActive(true);
 
 	mLevels[1] = new Level("lvl2.png", mPlayer);
 
@@ -89,6 +88,11 @@ PlayScreen::~PlayScreen() {
 
 	delete mUIBar;
 	mUIBar = nullptr;
+
+	for (int c = 0; c < sTotalLevelCount; c++) {
+		delete mLevels[c];
+		mLevels[c] = nullptr;
+	}
 }
 
 void PlayScreen::Update() {
@@ -100,6 +104,9 @@ void PlayScreen::Update() {
 	mLevels[mLevelIndex]->Update();
 	mPlayer->Update();
 	mUIBar->Update();
+
+
+	
 }
 
 void PlayScreen::Render() {
@@ -112,13 +119,13 @@ void PlayScreen::Render() {
 
 }
 
-void PlayScreen::Reset() {
-	//todo call reset functions for player level ui etc...
-}
-
 void PlayScreen::NextLevel() {
 	mLevels[mLevelIndex]->CollidersActive(false);
 	mLevelIndex++;
 	mLevels[mLevelIndex]->CollidersActive(true);
 	mPlayer->Position(mPlayerSpawn);
+}
+
+bool PlayScreen::GameOver() {
+	return mPlayer->Dead();
 }

@@ -26,10 +26,21 @@ void ScreenManager::Update() {
 			mStartScreen->ResetAnimation();
 			AudioManager::Instance()->PauseMusic();
 			AudioManager::Instance()->PlaySFX("SFX/startSound.wav");
+			mPlayScreen = new PlayScreen();
 		}
 		break;
 	case Play:
-		mPlayScreen->Update();
+		if (mPlayScreen->GameOver()) {
+			if (mInput->KeyPressed(SDL_SCANCODE_X)) {
+				mCurrentScreen = Start;
+				delete mPlayScreen;
+				
+			}
+		}
+		else {
+			mPlayScreen->Update();
+		}
+		
 		break;
 	}
 }
@@ -49,7 +60,6 @@ ScreenManager::ScreenManager() {
 	mInput = InputManager::Instance();
 
 	mStartScreen = new StartScreen();
-	mPlayScreen = new PlayScreen();
 
 	mCurrentScreen = Start;
 }
