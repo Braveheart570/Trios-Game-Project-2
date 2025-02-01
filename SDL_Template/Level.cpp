@@ -63,3 +63,22 @@ void Level::AddWall(Wall* wall) {
 void Level::AddEnemy(Enemy* enemy) {
 	mEnemies.push_back(enemy);
 }
+
+bool Level::LevelComplete() {
+	for (auto e : mEnemies) {
+		if (e->Active()) return false;
+	}
+	return true;
+}
+
+void Level::CollidersActive(bool active) {
+
+	for (auto p : mPlatforms) {
+		p->Active(active);
+	}
+
+	for (auto w : mWalls) {
+		w->Active(active);
+	}
+
+}

@@ -4,12 +4,16 @@ PlayScreen::PlayScreen() {
 	mTimer = Timer::Instance();
 	mAudio = AudioManager::Instance();
 
+	mPlayerSpawn = Vector2(Graphics::SCREEN_WIDTH * 0.5f, 570);
+
 	mPlayer = new Player();
 	mPlayer->Parent(this);
-	mPlayer->Position(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
+	mPlayer->Position(mPlayerSpawn);
 
 	mUIBar = new UIBar();
 	mUIBar->Parent(this);
+
+	mLevelIndex = 0;
 
 	mLevels[0] = new Level("lvl1.png", mPlayer);
 	mLevels[0]->Parent(this);
@@ -40,7 +44,17 @@ PlayScreen::PlayScreen() {
 	mLevels[0]->AddWall(new Wall({ 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
 	mLevels[0]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
 
-	mLevels[0]->AddEnemy(new Fishman({ 500,510 }, mPlayer));
+	mLevels[0]->AddEnemy(new Bat({ 550,110 }, mPlayer));
+	mLevels[0]->AddEnemy(new Bat({ 450,110 }, mPlayer, false));
+
+	mLevels[1] = new Level("lvl2.png", mPlayer);
+
+	mLevels[1]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
+
+	mLevels[1]->AddEnemy(new Fishman({ 500,510 }, mPlayer));
+	mLevels[1]->AddEnemy(new Zombie({ 200,100 }, mPlayer));
+
+	mLevels[1]->CollidersActive(false);
 
 }
 
@@ -56,13 +70,18 @@ PlayScreen::~PlayScreen() {
 }
 
 void PlayScreen::Update() {
-	mLevels[0]->Update();
+
+	if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_N)) {
+		NextLevel();
+	}
+
+	mLevels[mLevelIndex]->Update();
 	mPlayer->Update();
 }
 
 void PlayScreen::Render() {
 	
-	mLevels[0]->Render();
+	mLevels[mLevelIndex]->Render();
 
 	mPlayer->Render();
 
@@ -72,4 +91,11 @@ void PlayScreen::Render() {
 
 void PlayScreen::Reset() {
 	//todo call reset functions for player level ui etc...
+}
+
+void PlayScreen::NextLevel() {
+	mLevels[mLevelIndex]->CollidersActive(false);
+	mLevelIndex++;
+	mLevels[mLevelIndex]->CollidersActive(true);
+	mPlayer->Position(mPlayerSpawn);
 }

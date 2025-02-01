@@ -23,12 +23,16 @@ private:
 	AudioManager* mAudio;
 
 	Player* mPlayer;
+	Vector2 mPlayerSpawn;
 
 	static const int sTotalLevelCount = 16;
 	Level* mLevels[sTotalLevelCount];
+	int mLevelIndex;
 
 	Level* mCurrentlevel;
 
 	UIBar* mUIBar;
+
+	void NextLevel();
 };
 #endif

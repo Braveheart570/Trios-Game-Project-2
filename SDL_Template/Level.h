@@ -27,6 +27,10 @@ public:
 	void AddWall(Wall* wall);
 	void AddEnemy(Enemy* enemy);
 
+	bool LevelComplete(); // not using this yet
+
+	void CollidersActive(bool active);
+
 private:
 
 	GLTexture* mLevelTexture;
