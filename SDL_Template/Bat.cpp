@@ -6,7 +6,7 @@ Bat::Bat(Vector2 pos, Player* player, bool left) : Enemy(new AnimatedGLTexture("
 	Position(pos);
 	mLeft = left;
 
-	mYTrigger = 40;
+	mYTrigger = 200;
 	mTrackingPlayer = false;
 	mPlayerOriginOffset = -30;
 
