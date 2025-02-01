@@ -1,6 +1,6 @@
 #include "Boss.h"
 
-Boss::Boss(Vector2 pos, Player* player) : Enemy(new GLTexture("CarpathianSprites.png",84,17,23,32), player, 10000, 70, false) {
+Boss::Boss(Vector2 pos, Player* player) : Enemy(new GLTexture("CarpathianSprites.png",84,17,23,32), player, 10000, 30, false) { // health brought down to 30 for testing
 
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		mBullets[i] = new Bullet(false);
