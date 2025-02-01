@@ -80,7 +80,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[1]->AddEnemy(new Fishman({ 500,510 }, mPlayer));
 	mLevels[1]->AddEnemy(new Zombie({ 200,100 }, mPlayer));
-	mLevels[1]->AddEnemy(new Pumpkin({ 120,510 }, mPlayer));
+	mLevels[1]->AddEnemy(new Witch({ 320,200 }, mPlayer));
 
 	mLevels[1]->CollidersActive(false);
 
@@ -90,6 +90,7 @@ PlayScreen::PlayScreen() {
 	mLevels[2]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
 	mLevels[2]->AddEnemy(new Mummy({ 320,500 },mPlayer));
+	mLevels[2]->AddEnemy(new Pumpkin({ 120,510 }, mPlayer));
 
 	mLevels[2]->CollidersActive(false);
 

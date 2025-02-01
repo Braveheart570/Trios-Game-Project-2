@@ -11,7 +11,7 @@ public:
 	void Update() override;
 	void Render() override;
 
-private:
+protected:
 
 	bool mFacingRight;
 
@@ -27,8 +27,9 @@ private:
 
 	GLTexture* mFiringTex;
 
-	static const int MAX_BULLETS = 2;
+	static const int MAX_BULLETS = 16;
 	Bullet* mBullets[MAX_BULLETS];
-	void Fire();
+	 virtual void Fire();
 
+	 Pumpkin(GLTexture* tex, GLTexture* firTex, Vector2 pos, Player* player);
 };

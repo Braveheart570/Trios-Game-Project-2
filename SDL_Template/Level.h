@@ -14,6 +14,7 @@
 #include "Pumpkin.h"
 #include "RedBat.h"
 #include "Mummy.h"
+#include "witch.h"
 
 using namespace SDLFramework;
 

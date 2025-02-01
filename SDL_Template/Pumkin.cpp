@@ -30,6 +30,34 @@ Pumpkin::Pumpkin(Vector2 pos, Player* player) : Enemy(new GLTexture("CarpathianS
 
 }
 
+Pumpkin::Pumpkin(GLTexture* tex, GLTexture* firTex, Vector2 pos, Player* player) : Enemy(tex,player,600,5,false) {
+	mFiringTex = firTex;
+	mFiringTex->Scale(Vec2_One * 5.0f);
+	mFiringTex->Parent(this);
+
+	Position(pos);
+
+	mYTrigger = 100;
+	mPlayerOriginOffset = -30;
+
+	mFireTime = 0.0f;
+	mFireInterval = 2.0f;
+
+	mFiring = false;
+	mFireTexTime = 0.0f;
+	mFireTexDur = 0.15f;
+
+	mFacingRight = false;
+
+	for (int i = 0; i < MAX_BULLETS; ++i) {
+		mBullets[i] = new Bullet(false);
+	}
+
+	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
+
+	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
+}
+
 Pumpkin::~Pumpkin() {
 	delete mFiringTex;
 	mFiringTex = nullptr;
