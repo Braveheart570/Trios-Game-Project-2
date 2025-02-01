@@ -2,6 +2,7 @@
 #define __BULLET_H
 #include "PhysEntity.h"
 #include "Timer.h"
+#include "AnimatedGLTexture.h"
 
 using namespace SDLFramework;
 
