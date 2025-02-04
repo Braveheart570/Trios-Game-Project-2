@@ -19,7 +19,7 @@ PlayScreen::PlayScreen() {
 	mGameOverTex->Position(Graphics::SCREEN_WIDTH/2,Graphics::SCREEN_HEIGHT/2);
 
 
-	mLevelIndex = 6;
+	mLevelIndex = 0;
 
 	mLevels[0] = new Level("lvl1.png", mPlayer);
 	mLevels[0]->Parent(this);
@@ -50,7 +50,7 @@ PlayScreen::PlayScreen() {
 	mLevels[0]->AddWall(new Wall({ 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
 	mLevels[0]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
 
-	mLevels[0]->CollidersActive(false);
+	mLevels[0]->CollidersActive(true);
 
 
 
@@ -133,19 +133,36 @@ PlayScreen::PlayScreen() {
 
 
 
-	mLevels[4] = new Level("lvl16.png", mPlayer);
+	mLevels[4] = new Level("lvl11.png", mPlayer);
 
 	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
-	mLevels[4]->AddPlatform(new Platform({ 60 ,Graphics::SCREEN_HEIGHT - 245 }, 120));
-	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 60 ,Graphics::SCREEN_HEIGHT - 245 }, 120));
+	mLevels[4]->AddPlatform(new Platform({ 170 ,Graphics::SCREEN_HEIGHT - 125 }, 45));
+	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 170 ,Graphics::SCREEN_HEIGHT - 125 }, 45));
 
-	mLevels[4]->AddPlatform(new Platform({ 60 ,235 }, 120));
-	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 60 ,235 }, 120));
+	mLevels[4]->AddPlatform(new Platform({ 125 ,Graphics::SCREEN_HEIGHT - 165 }, 45));
+	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 125 ,Graphics::SCREEN_HEIGHT - 165 }, 45));
 
-	mLevels[4]->AddWall(new Wall({ 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
-	mLevels[4]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
+	mLevels[4]->AddPlatform(new Platform({ 60 ,Graphics::SCREEN_HEIGHT - 245 }, 110));
+	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 60 ,Graphics::SCREEN_HEIGHT - 245 }, 110));
+	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 245 }, 140));
 
+	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,235 }, 150));
+	mLevels[4]->AddPlatform(new Platform({ 80 ,235 }, 150));
+	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 80 ,235 }, 150));
+
+	mLevels[4]->AddPlatform(new Platform({ 200 ,77 }, 145));
+	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 200 ,77 }, 145));
+
+	mLevels[4]->AddWall(new Wall({ 100 ,Graphics::SCREEN_HEIGHT - 85 }, 160));
+	mLevels[4]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 100 ,Graphics::SCREEN_HEIGHT - 85 }, 160));
+	mLevels[4]->AddWall(new Wall({ 140 ,Graphics::SCREEN_HEIGHT - 85 }, 80));
+	mLevels[4]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 140 ,Graphics::SCREEN_HEIGHT - 85 }, 80));
+	mLevels[4]->AddWall(new Wall({ 180 ,Graphics::SCREEN_HEIGHT - 85 }, 40));
+	mLevels[4]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 180 ,Graphics::SCREEN_HEIGHT - 85 }, 40));
+
+	mLevels[4]->AddWall(new Wall({ 20 ,270 }, 320));
+	mLevels[4]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,270 }, 320));
 
 	mLevels[4]->CollidersActive(false);
 
@@ -172,38 +189,21 @@ PlayScreen::PlayScreen() {
 
 
 
-	mLevels[6] = new Level("lvl11.png", mPlayer);
+	mLevels[6] = new Level("lvl16.png", mPlayer);
 
 	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
-	mLevels[6]->AddPlatform(new Platform({ 170 ,Graphics::SCREEN_HEIGHT - 125 }, 45));
-	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 170 ,Graphics::SCREEN_HEIGHT - 125 }, 45));
+	mLevels[6]->AddPlatform(new Platform({ 60 ,Graphics::SCREEN_HEIGHT - 245 }, 120));
+	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 60 ,Graphics::SCREEN_HEIGHT - 245 }, 120));
 
-	mLevels[6]->AddPlatform(new Platform({ 125 ,Graphics::SCREEN_HEIGHT - 165 }, 45));
-	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 125 ,Graphics::SCREEN_HEIGHT - 165 }, 45));
+	mLevels[6]->AddPlatform(new Platform({ 60 ,235 }, 120));
+	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 60 ,235 }, 120));
 
-	mLevels[6]->AddPlatform(new Platform({ 60 ,Graphics::SCREEN_HEIGHT - 245 }, 110));
-	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 60 ,Graphics::SCREEN_HEIGHT - 245 }, 110));
-	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH/2 ,Graphics::SCREEN_HEIGHT - 245 }, 140));
+	mLevels[6]->AddWall(new Wall({ 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
+	mLevels[6]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
 
-	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,235 }, 150));
-	mLevels[6]->AddPlatform(new Platform({ 80 ,235 }, 150));
-	mLevels[6]->AddPlatform(new Platform({Graphics::SCREEN_WIDTH - 80 ,235 }, 150));
 
-	mLevels[6]->AddPlatform(new Platform({ 200 ,77 }, 145));
-	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 200 ,77 }, 145));
-
-	mLevels[6]->AddWall(new Wall({ 100 ,Graphics::SCREEN_HEIGHT - 85 }, 160));
-	mLevels[6]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 100 ,Graphics::SCREEN_HEIGHT - 85 }, 160));
-	mLevels[6]->AddWall(new Wall({ 140 ,Graphics::SCREEN_HEIGHT - 85 }, 80));
-	mLevels[6]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 140 ,Graphics::SCREEN_HEIGHT - 85 }, 80));
-	mLevels[6]->AddWall(new Wall({ 180 ,Graphics::SCREEN_HEIGHT - 85 }, 40));
-	mLevels[6]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 180 ,Graphics::SCREEN_HEIGHT - 85 }, 40));
-
-	mLevels[6]->AddWall(new Wall({ 20 ,270 }, 320));
-	mLevels[6]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,270 }, 320));
-
-	mLevels[6]->CollidersActive(true);
+	mLevels[6]->CollidersActive(false);
 
 	mAudio->PlayMusic("Music/LevelMusic.wav");
 
@@ -256,7 +256,7 @@ void PlayScreen::Render() {
 
 void PlayScreen::NextLevel() {
 
-	if (mLevelIndex >= 3) {// todo temp
+	if (mLevelIndex > sTotalLevelCount) {// todo temp
 		std::cout << "end of testing levels" << std::endl;
 		return;
 	}
