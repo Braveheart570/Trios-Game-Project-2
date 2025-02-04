@@ -19,7 +19,7 @@ PlayScreen::PlayScreen() {
 	mGameOverTex->Position(Graphics::SCREEN_WIDTH/2,Graphics::SCREEN_HEIGHT/2);
 
 
-	mLevelIndex = 3;
+	mLevelIndex = 4;
 
 	mLevels[0] = new Level("lvl1.png", mPlayer);
 	mLevels[0]->Parent(this);
@@ -129,7 +129,25 @@ PlayScreen::PlayScreen() {
 	mLevels[3]->AddWall(new Wall({ 20,265 }, 320));
 	mLevels[3]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20,265 }, 320));
 
-	mLevels[3]->CollidersActive(true);
+	mLevels[3]->CollidersActive(false);
+
+
+
+	mLevels[4] = new Level("lvl16.png", mPlayer);
+
+	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
+
+	mLevels[4]->AddPlatform(new Platform({ 60 ,Graphics::SCREEN_HEIGHT - 245 }, 120));
+	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 60 ,Graphics::SCREEN_HEIGHT - 245 }, 120));
+
+	mLevels[4]->AddPlatform(new Platform({ 60 ,235 }, 120));
+	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 60 ,235 }, 120));
+
+	mLevels[4]->AddWall(new Wall({ 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
+	mLevels[4]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
+
+
+	mLevels[4]->CollidersActive(true);
 
 	mAudio->PlayMusic("Music/LevelMusic.wav");
 
