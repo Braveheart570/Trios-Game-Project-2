@@ -89,12 +89,12 @@ bool PhysEntity::CheckCollision(PhysEntity * other) {
 
 void PhysEntity::Render() {
 	for (auto c : mColliders) {
-		//c->Render();
+		c->Render();
 	}
 
 	if (mBroadPhaseCollider) {
 		//mBroadPhaseCollider->Render();
 	}
 
-	//Graphics::Instance()->DrawLine(Position().x,Position().y,Position().x+100,Position().y+100);
+	Graphics::Instance()->DrawLine(Position().x,Position().y,Position().x+100,Position().y+100);
 }
