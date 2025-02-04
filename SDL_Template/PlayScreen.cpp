@@ -18,6 +18,15 @@ PlayScreen::PlayScreen() {
 	mGameOverTex->Scale(Vec2_One*5.0f);
 	mGameOverTex->Position(Graphics::SCREEN_WIDTH/2,Graphics::SCREEN_HEIGHT/2);
 
+	mControls = new GLTexture("Controls2.png");
+	mControls->Parent(this);
+	mControls->Scale(Vec2_One*5.0f);
+	mControls->Position(Graphics::SCREEN_WIDTH/2,Graphics::SCREEN_HEIGHT/2);
+
+	std::string chamberText ="Chamber: " + std::to_string(mLevelIndex + 1);
+	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
+	MChamberNumLabel->Parent(this);
+	MChamberNumLabel->Position(Graphics::SCREEN_WIDTH/2,150);
 
 	mLevelIndex = 0;
 
@@ -207,6 +216,10 @@ PlayScreen::PlayScreen() {
 
 	mAudio->PlayMusic("Music/LevelMusic.wav");
 
+	mStarted = false;
+	mIntroTime = 0.0f;
+	mIntroDur = 4.0f;
+
 }
 
 PlayScreen::~PlayScreen() {
@@ -226,17 +239,33 @@ PlayScreen::~PlayScreen() {
 		delete mLevels[c];
 		mLevels[c] = nullptr;
 	}
+
+	delete MChamberNumLabel;
+	MChamberNumLabel = nullptr;
+
+	delete mControls;
+	mControls = nullptr;
 }
 
 void PlayScreen::Update() {
 
-	if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_N)) {
-		NextLevel();
+	if (mStarted) {
+		if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_N)) {
+			NextLevel();
+		}
+
+		mLevels[mLevelIndex]->Update();
+		mPlayer->Update();
+		mUIBar->Update();
+	}
+	else {
+		mIntroTime += mTimer->DeltaTime();
+		if (mIntroTime >= mIntroDur) {
+			mStarted = true;
+		}
 	}
 
-	mLevels[mLevelIndex]->Update();
-	mPlayer->Update();
-	mUIBar->Update();
+	
 
 
 	
@@ -252,6 +281,13 @@ void PlayScreen::Render() {
 
 	if (mPlayer->Dead()) mGameOverTex->Render();
 
+	if (!mStarted) {
+		if (mLevelIndex == 0) {
+			mControls->Render();
+		}
+		MChamberNumLabel->Render();
+	}
+
 }
 
 void PlayScreen::NextLevel() {
@@ -265,6 +301,16 @@ void PlayScreen::NextLevel() {
 	mLevelIndex++;
 	mLevels[mLevelIndex]->CollidersActive(true);
 	mPlayer->Position(mPlayerSpawn);
+
+	mIntroDur = 2.5f;
+	mIntroTime = 0.0f;
+	mStarted = false;
+
+	delete MChamberNumLabel;
+	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
+	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
+	MChamberNumLabel->Parent(this);
+	MChamberNumLabel->Position(Graphics::SCREEN_WIDTH / 2, 150);
 }
 
 bool PlayScreen::GameOver() {

@@ -24,6 +24,13 @@ private:
 	Player* mPlayer;
 	Vector2 mPlayerSpawn;
 
+	GLTexture* mControls;
+	GLTexture* MChamberNumLabel;
+
+	bool mStarted;
+	float mIntroTime;
+	float mIntroDur;
+
 	GLTexture* mGameOverTex;
 
 	static const int sTotalLevelCount = 16;
