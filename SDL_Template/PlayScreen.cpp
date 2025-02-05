@@ -4,6 +4,8 @@ PlayScreen::PlayScreen() {
 	mTimer = Timer::Instance();
 	mAudio = AudioManager::Instance();
 
+	mHeartManager = HeartManager::Instance();
+
 	mPlayerSpawn = Vector2(Graphics::SCREEN_WIDTH * 0.5f, 570);
 
 	mPlayer = new Player();
@@ -58,6 +60,10 @@ PlayScreen::PlayScreen() {
 
 	mLevels[0]->AddWall(new Wall({ 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
 	mLevels[0]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
+
+	mLevels[0]->AddEnemy(new Bat({ 320,350 }, mPlayer));
+	mLevels[0]->AddEnemy(new Bat({ 320,350 }, mPlayer, false));
+	mLevels[0]->AddEnemy(new Bat({ 300,320 }, mPlayer));
 
 	mLevels[0]->CollidersActive(true);
 
@@ -226,6 +232,9 @@ PlayScreen::~PlayScreen() {
 	mTimer = nullptr;
 	mAudio = nullptr;
 
+	mHeartManager->Release();
+	mHeartManager = nullptr;
+
 	delete mPlayer;
 	mPlayer = nullptr;
 
@@ -257,6 +266,7 @@ void PlayScreen::Update() {
 		mLevels[mLevelIndex]->Update();
 		mPlayer->Update();
 		mUIBar->Update();
+		mHeartManager->Update();
 	}
 	else {
 		mIntroTime += mTimer->DeltaTime();
@@ -278,6 +288,8 @@ void PlayScreen::Render() {
 	mPlayer->Render();
 
 	mUIBar->Render();
+
+	mHeartManager->Render();
 
 	if (mPlayer->Dead()) mGameOverTex->Render();
 
@@ -301,6 +313,8 @@ void PlayScreen::NextLevel() {
 	mLevelIndex++;
 	mLevels[mLevelIndex]->CollidersActive(true);
 	mPlayer->Position(mPlayerSpawn);
+
+	mHeartManager->ClearHearts();
 
 	mIntroDur = 2.5f;
 	mIntroTime = 0.0f;

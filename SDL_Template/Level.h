@@ -49,8 +49,5 @@ private:
 
 	std::vector<Enemy*> mEnemies;
 
-	static const int MAX_HEARTS = 4;
-	Heart* mHearts[MAX_HEARTS];
-
 	Vector2 mPlayerStart;
 };

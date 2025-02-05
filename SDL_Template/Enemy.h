@@ -4,6 +4,8 @@
 #include "Timer.h"
 #include "Player.h"
 #include "BoxCollider.h"
+#include "HeartManager.h"
+#include "Random.h"
 
 using namespace SDLFramework;
 

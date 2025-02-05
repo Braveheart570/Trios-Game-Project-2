@@ -4,6 +4,7 @@
 #include "UIBar.h"
 #include "LifeIcon.h"
 #include "Level.h"
+#include "HeartManager.h"
 
 class PlayScreen : public GameEntity {
 
@@ -20,6 +21,8 @@ public:
 private:
 	Timer* mTimer;
 	AudioManager* mAudio;
+
+	HeartManager* mHeartManager;
 
 	Player* mPlayer;
 	Vector2 mPlayerSpawn;
