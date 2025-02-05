@@ -42,6 +42,12 @@ void ScreenManager::Update() {
 		}
 		
 		break;
+	case Win:
+		mWinScreen->Update();
+		if (mInput->KeyPressed(SDL_SCANCODE_X)) {
+			mCurrentScreen = Start;
+			mStartScreen->ResetAnimation();
+		}
 	}
 }
 
@@ -53,6 +59,9 @@ void ScreenManager::Render() {
 	case Play:
 		mPlayScreen->Render();
 		break;
+	case Win:
+		mWinScreen->Render();
+		break;
 	}
 }
 
@@ -60,6 +69,8 @@ ScreenManager::ScreenManager() {
 	mInput = InputManager::Instance();
 
 	mStartScreen = new StartScreen();
+
+	mWinScreen = new WinScreen();
 
 	mCurrentScreen = Start;
 }

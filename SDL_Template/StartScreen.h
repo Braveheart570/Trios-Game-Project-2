@@ -4,6 +4,7 @@
 #include "InputManager.h"
 #include "Scoreboard.h"
 #include "AudioManager.h"
+#include "ScrollingBG.h";
 
 using namespace SDLFramework;
 
@@ -15,10 +16,8 @@ private:
 	InputManager * mInput;
 	AudioManager* mAudio;
 
-	GLTexture* mSky[3];
-	GLTexture* mMoon;
-	static const int sMountainPannels = 5;
-	GLTexture* mMountains[sMountainPannels];
+	ScrollingBG* mBackground;
+
 	GLTexture* mTitle;
 
 

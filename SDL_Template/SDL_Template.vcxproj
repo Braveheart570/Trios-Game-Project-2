@@ -192,6 +192,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClCompile Include="RedBat.cpp" />
     <ClCompile Include="Scoreboard.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
+    <ClCompile Include="ScrollingBG.cpp" />
     <ClCompile Include="ShaderUtil.cpp" />
     <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="StartScreen.cpp" />
@@ -201,6 +202,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClCompile Include="Torch.cpp" />
     <ClCompile Include="UIBar.cpp" />
     <ClCompile Include="Wall.cpp" />
+    <ClCompile Include="WinScreen.cpp" />
     <ClCompile Include="Witch.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
@@ -242,6 +244,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClInclude Include="RedBat.h" />
     <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="ScrollingBG.h" />
     <ClInclude Include="ShaderUtil.h" />
     <ClInclude Include="Skeleton.h" />
     <ClInclude Include="StartScreen.h" />
@@ -251,6 +254,7 @@ xcopy "$(ProjectDir)..\Data\*" "$(OutDir)Data\" /y /s</Command>
     <ClInclude Include="Torch.h" />
     <ClInclude Include="UIBar.h" />
     <ClInclude Include="Wall.h" />
+    <ClInclude Include="WinScreen.h" />
     <ClInclude Include="Witch.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
