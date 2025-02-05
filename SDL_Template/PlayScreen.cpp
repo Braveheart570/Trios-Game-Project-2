@@ -327,11 +327,6 @@ void PlayScreen::Update() {
 			mStarted = true;
 		}
 	}
-
-	
-
-
-	
 }
 
 void PlayScreen::Render() {

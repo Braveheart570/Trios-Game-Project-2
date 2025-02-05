@@ -22,6 +22,7 @@ private:
 
 	int mDisplayedHealth;
 	int mKnownScore;
+	int mKnownMaxHealth;
 
 	GLTexture* mScoreLabel;
 	Scoreboard* mScoreboard;

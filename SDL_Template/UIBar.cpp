@@ -12,11 +12,13 @@ UIBar::UIBar(Player* player) {
 	mLifeLabel->Position({ 60,Graphics::SCREEN_HEIGHT - 30 });
 	mLifeLabel->Parent(this);
 
-	for (int c = 0; c < mPlayer->MaxHeath(); c++) {
+	mKnownMaxHealth = mPlayer->MaxHeath();
+
+	for (int c = 0; c < mKnownMaxHealth; c++) {
 		mLifeIcons.push_back(new LifeIcon(110 + (c * 15), Graphics::SCREEN_HEIGHT - 30));
 		mLifeIcons[c]->Parent(this);
 	}
-	mDisplayedHealth = mPlayer->MaxHeath();
+	mDisplayedHealth = mKnownMaxHealth;
 
 	mScoreLabel = new GLTexture("score:", "pico-8-mono-upper.ttf", 20, { 255,204,170 });
 	mScoreLabel->Position(400, Graphics::SCREEN_HEIGHT - 30);
@@ -60,6 +62,19 @@ void UIBar::Update() {
 		mScoreboard->Score(mKnownScore);
 	}
 
+
+
+	if (mKnownMaxHealth < mPlayer->MaxHeath()) {
+		
+		for (int c = mKnownMaxHealth; c < mPlayer->MaxHeath(); c++) {
+			mLifeIcons.push_back(new LifeIcon(110 + (c * 15), Graphics::SCREEN_HEIGHT - 30));
+			mLifeIcons[mLifeIcons.size()-1]->Parent(this);
+		}
+		mKnownMaxHealth = mPlayer->MaxHeath();
+	}
+	else if (mKnownMaxHealth > mPlayer->MaxHeath()) {
+		std::cout << "max health shrunk? THATS NOT MEANT TO HAPPEN!" << std::endl;
+	}
 
 	if (mPlayer->Health() != mDisplayedHealth) {
 		mDisplayedHealth = mPlayer->Health();

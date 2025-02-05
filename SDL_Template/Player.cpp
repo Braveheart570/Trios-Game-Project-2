@@ -335,6 +335,11 @@ int Player::MaxHeath() {
 	return mMaxHealth;
 }
 
+void Player::UpgradeHealth() {
+	mMaxHealth = 15;
+	mHealth = mMaxHealth;
+}
+
 int Player::Health() {
 	return mHealth;
 }

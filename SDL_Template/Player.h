@@ -82,6 +82,7 @@ public:
 
 	int MaxHeath();
 	int Health();
+	void UpgradeHealth();
 
 	bool Dead();
 };
