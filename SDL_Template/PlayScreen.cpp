@@ -69,7 +69,19 @@ PlayScreen::PlayScreen() {
 	mLevels[0]->AddWall(new Wall({ 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
 	mLevels[0]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
 
-	mLevels[0]->AddEnemy(new Torch({ 400,500 }, mPlayer));
+	mLevels[0]->AddEnemy(new Torch({ 80,500 }, mPlayer));
+	mLevels[0]->AddEnemy(new Torch({ 560,500 }, mPlayer));
+
+	mLevels[0]->AddEnemy(new Torch({ 245,30 }, mPlayer));
+	mLevels[0]->AddEnemy(new Torch({ 395,30 }, mPlayer));
+
+	mLevels[0]->AddEnemy(new Bat({110,310},mPlayer, false));
+	mLevels[0]->AddEnemy(new Bat({ 340,310 }, mPlayer));
+
+	mLevels[0]->AddEnemy(new Bat({ 50,140 }, mPlayer, false));
+	mLevels[0]->AddEnemy(new Bat({ 390,140 }, mPlayer));
+
+	mLevels[0]->AddEnemy(new Bat({ 450,20 }, mPlayer));
 
 	mLevels[0]->CollidersActive(true);
 
