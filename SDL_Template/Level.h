@@ -34,7 +34,7 @@ public:
 	void AddWall(Wall* wall);
 	void AddEnemy(Enemy* enemy);
 
-	bool LevelComplete(); // not using this yet
+	bool LevelComplete();
 
 	void CollidersActive(bool active);
 
