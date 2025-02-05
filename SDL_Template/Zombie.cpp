@@ -4,7 +4,7 @@ Zombie::Zombie(Vector2 pos, Player* player) : Enemy(new AnimatedGLTexture("Carpa
 	
 	Position(pos);
 
-	nWanderXRight = pos.y + mWanderDist;
+	nWanderXRight = pos.x + mWanderDist;
 	mWanderXLeft = pos.x - mWanderDist;
 
 	mFacingRight = false;
@@ -19,7 +19,7 @@ Zombie::Zombie(AnimatedGLTexture* tex, Vector2 pos, Player* player) : Enemy(tex,
 
 	Position(pos);
 
-	nWanderXRight = pos.y + mWanderDist;
+	nWanderXRight = pos.x + mWanderDist;
 	mWanderXLeft = pos.x - mWanderDist;
 
 	mFacingRight = false;

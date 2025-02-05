@@ -38,7 +38,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 0;
+	mLevelIndex = 1;
 
 	mLevels[0] = new Level("lvl1.png", mPlayer);
 	mLevels[0]->Parent(this);
@@ -83,7 +83,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[0]->AddEnemy(new Bat({ 450,20 }, mPlayer));
 
-	mLevels[0]->CollidersActive(true);
+	mLevels[0]->CollidersActive(false);
 
 
 
@@ -107,9 +107,24 @@ PlayScreen::PlayScreen() {
 	mLevels[1]->AddWall(new Wall({ 20, (Graphics::SCREEN_HEIGHT / 2) - 83 }, 260));
 	mLevels[1]->AddWall(new Wall({Graphics::SCREEN_WIDTH - 20, (Graphics::SCREEN_HEIGHT / 2) - 83 }, 260));
 
-	mLevels[1]->AddEnemy(new Torch({ 400,500 }, mPlayer));
+	mLevels[1]->AddEnemy(new Torch({ 90,500 }, mPlayer));
+	mLevels[1]->AddEnemy(new Torch({ 550,500 }, mPlayer));
 
-	mLevels[1]->CollidersActive(false);
+	mLevels[1]->AddEnemy(new Torch({ 120,380 }, mPlayer));
+	mLevels[1]->AddEnemy(new Torch({ 580,380 }, mPlayer));
+
+	mLevels[1]->AddEnemy(new Torch({ 260,55 }, mPlayer));
+	mLevels[1]->AddEnemy(new Torch({ 417,55 }, mPlayer));
+
+	mLevels[1]->AddEnemy(new Zombie({ 320,350 }, mPlayer));
+
+	mLevels[1]->AddEnemy(new Zombie({ 130,190 }, mPlayer));
+	mLevels[1]->AddEnemy(new Zombie({ 510,190 }, mPlayer));
+
+	mLevels[1]->AddEnemy(new Zombie({ 130,510 }, mPlayer));
+	mLevels[1]->AddEnemy(new Zombie({ 510,510 }, mPlayer));
+
+	mLevels[1]->CollidersActive(true);
 
 
 
