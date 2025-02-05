@@ -30,6 +30,14 @@ PlayScreen::PlayScreen() {
 	MChamberNumLabel->Parent(this);
 	MChamberNumLabel->Position(Graphics::SCREEN_WIDTH/2,150);
 
+	mLevelClearedLabel = new GLTexture("Level Cleared", "pico-8-mono-upper.ttf", 25, { 255,204,170 });
+	mLevelClearedLabel->Parent(this);
+	mLevelClearedLabel->Position(Graphics::SCREEN_WIDTH / 2, 150);
+
+	mLevelCompleted = false;
+	LevelTransitionTime = 0.0f;
+	LevelTransitionDur = 2.5f;
+
 	mLevelIndex = 0;
 
 	mLevels[0] = new Level("lvl1.png", mPlayer);
@@ -61,9 +69,7 @@ PlayScreen::PlayScreen() {
 	mLevels[0]->AddWall(new Wall({ 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
 	mLevels[0]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20,Graphics::SCREEN_HEIGHT - 380 }, 300));
 
-	mLevels[0]->AddEnemy(new Bat({ 320,350 }, mPlayer));
-	mLevels[0]->AddEnemy(new Bat({ 320,350 }, mPlayer, false));
-	mLevels[0]->AddEnemy(new Bat({ 300,320 }, mPlayer));
+	mLevels[0]->AddEnemy(new Torch({ 400,500 }, mPlayer));
 
 	mLevels[0]->CollidersActive(true);
 
@@ -88,6 +94,8 @@ PlayScreen::PlayScreen() {
 
 	mLevels[1]->AddWall(new Wall({ 20, (Graphics::SCREEN_HEIGHT / 2) - 83 }, 260));
 	mLevels[1]->AddWall(new Wall({Graphics::SCREEN_WIDTH - 20, (Graphics::SCREEN_HEIGHT / 2) - 83 }, 260));
+
+	mLevels[1]->AddEnemy(new Torch({ 400,500 }, mPlayer));
 
 	mLevels[1]->CollidersActive(false);
 
@@ -116,6 +124,8 @@ PlayScreen::PlayScreen() {
 
 	mLevels[2]->AddWall(new Wall({ Graphics::SCREEN_WIDTH / 2 - 60, Graphics::SCREEN_HEIGHT / 2 - 83 }, 150));
 
+	mLevels[2]->AddEnemy(new Torch({ 400,500 }, mPlayer));
+
 	mLevels[2]->CollidersActive(false);
 
 
@@ -143,6 +153,8 @@ PlayScreen::PlayScreen() {
 
 	mLevels[3]->AddWall(new Wall({ 20,265 }, 320));
 	mLevels[3]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20,265 }, 320));
+
+	mLevels[3]->AddEnemy(new Torch({ 400,500 }, mPlayer));
 
 	mLevels[3]->CollidersActive(false);
 
@@ -179,6 +191,8 @@ PlayScreen::PlayScreen() {
 	mLevels[4]->AddWall(new Wall({ 20 ,270 }, 320));
 	mLevels[4]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,270 }, 320));
 
+	mLevels[4]->AddEnemy(new Torch({ 400,500 }, mPlayer));
+
 	mLevels[4]->CollidersActive(false);
 
 
@@ -200,6 +214,8 @@ PlayScreen::PlayScreen() {
 	mLevels[5]->AddWall(new Wall({ 20 ,270 }, 320));
 	mLevels[5]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,270 }, 320));
 
+	mLevels[5]->AddEnemy(new Torch({ 400,500 }, mPlayer));
+
 	mLevels[5]->CollidersActive(false);
 
 
@@ -217,6 +233,7 @@ PlayScreen::PlayScreen() {
 	mLevels[6]->AddWall(new Wall({ 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
 	mLevels[6]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
 
+	mLevels[6]->AddEnemy(new Torch({ 400,500 }, mPlayer));
 
 	mLevels[6]->CollidersActive(false);
 
@@ -259,14 +276,23 @@ PlayScreen::~PlayScreen() {
 void PlayScreen::Update() {
 
 	if (mStarted) {
-		if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_N)) {
-			NextLevel();
+		
+		if (mLevelCompleted) {
+			LevelTransitionTime += mTimer->DeltaTime();
+			if (LevelTransitionTime >= LevelTransitionDur) {
+				NextLevel();
+			}
+		}
+		else if (mLevels[mLevelIndex]->LevelComplete()) {
+			mLevelCompleted = true;
 		}
 
 		mLevels[mLevelIndex]->Update();
 		mPlayer->Update();
 		mUIBar->Update();
 		mHeartManager->Update();
+
+
 	}
 	else {
 		mIntroTime += mTimer->DeltaTime();
@@ -300,6 +326,10 @@ void PlayScreen::Render() {
 		MChamberNumLabel->Render();
 	}
 
+	if (mLevelCompleted) {
+		mLevelClearedLabel->Render();
+	}
+
 }
 
 void PlayScreen::NextLevel() {
@@ -325,6 +355,9 @@ void PlayScreen::NextLevel() {
 	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
 	MChamberNumLabel->Parent(this);
 	MChamberNumLabel->Position(Graphics::SCREEN_WIDTH / 2, 150);
+
+	mLevelCompleted = false;
+	LevelTransitionTime = 0.0f;
 }
 
 bool PlayScreen::GameOver() {

@@ -34,6 +34,11 @@ private:
 	float mIntroTime;
 	float mIntroDur;
 
+	bool mLevelCompleted;
+	float LevelTransitionTime;
+	float LevelTransitionDur;
+	GLTexture* mLevelClearedLabel;
+
 	GLTexture* mGameOverTex;
 
 	static const int sTotalLevelCount = 16;
