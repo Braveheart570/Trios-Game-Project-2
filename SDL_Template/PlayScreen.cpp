@@ -404,8 +404,8 @@ void PlayScreen::Render() {
 
 void PlayScreen::NextLevel() {
 
-	if (mLevelIndex > sTotalLevelCount) {// todo temp
-		std::cout << "end of testing levels" << std::endl;
+	if (mLevelIndex = sTotalLevelCount-1) {
+		mWin = true;
 		return;
 	}
 
@@ -432,4 +432,8 @@ void PlayScreen::NextLevel() {
 
 bool PlayScreen::GameOver() {
 	return mPlayer->Dead();
+}
+
+bool PlayScreen::Win() {
+	return mWin;
 }

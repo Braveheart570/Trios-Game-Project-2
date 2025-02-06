@@ -3,7 +3,6 @@
 #include "AnimatedGLTexture.h"
 #include "InputManager.h"
 #include "Scoreboard.h"
-#include "AudioManager.h"
 #include "ScrollingBG.h";
 
 using namespace SDLFramework;
@@ -14,7 +13,6 @@ private:
 
 	Timer * mTimer;
 	InputManager * mInput;
-	AudioManager* mAudio;
 
 	ScrollingBG* mBackground;
 

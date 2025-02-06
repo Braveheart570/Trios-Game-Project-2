@@ -18,6 +18,8 @@ public:
 
 	bool GameOver();
 
+	bool Win();
+
 private:
 	Timer* mTimer;
 	AudioManager* mAudio;
@@ -41,7 +43,9 @@ private:
 
 	GLTexture* mGameOverTex;
 
-	static const int sTotalLevelCount = 16;
+	bool mWin;
+
+	static const int sTotalLevelCount = 7;
 	Level* mLevels[sTotalLevelCount];
 	int mLevelIndex;
 

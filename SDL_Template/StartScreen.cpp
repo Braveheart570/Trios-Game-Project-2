@@ -3,7 +3,6 @@
 StartScreen::StartScreen() {
 	mTimer = Timer::Instance();
 	mInput = InputManager::Instance();
-	mAudio = AudioManager::Instance();
 
 	mBackground = new ScrollingBG();
 	mBackground->Parent(this);
@@ -21,7 +20,6 @@ StartScreen::StartScreen() {
 StartScreen::~StartScreen() {
 	mTimer = nullptr;
 	mInput = nullptr;
-	mAudio = nullptr;
 
 	delete mBackground;
 	mBackground = nullptr;
@@ -29,7 +27,6 @@ StartScreen::~StartScreen() {
 }
 
 void StartScreen::ResetAnimation() {
-	mAudio->PlayMusic("Music/menuMusic.wav");
 	mBackground->ResetAnimations();
 	mTitle->Position({ Graphics::SCREEN_WIDTH / 2,490.0f });
 

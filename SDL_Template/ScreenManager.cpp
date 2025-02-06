@@ -34,11 +34,17 @@ void ScreenManager::Update() {
 				mCurrentScreen = Start;
 				delete mPlayScreen;
 				mStartScreen->ResetAnimation();
+				AudioManager::Instance()->PlayMusic("Music/menuMusic.wav");
 				
 			}
 		}
 		else {
 			mPlayScreen->Update();
+			if (mPlayScreen->Win()) {
+				delete mPlayScreen;
+				mCurrentScreen = Win;
+				AudioManager::Instance()->PlayMusic("Music/menuMusic.wav");
+			}
 		}
 		
 		break;
@@ -73,6 +79,7 @@ ScreenManager::ScreenManager() {
 	mWinScreen = new WinScreen();
 
 	mCurrentScreen = Start;
+	AudioManager::Instance()->PlayMusic("Music/menuMusic.wav");
 }
 
 ScreenManager::~ScreenManager() {
