@@ -279,6 +279,26 @@ PlayScreen::PlayScreen() {
 	mLevels[5]->AddWall(new Wall({ 620 ,230 }, 250));
 
 	mLevels[5]->AddEnemy(new Torch({ 400,500 }, mPlayer));
+	mLevels[5]->AddEnemy(new Torch({ 240,500 }, mPlayer));
+
+	mLevels[5]->AddEnemy(new Torch({ 400,330 }, mPlayer));
+	mLevels[5]->AddEnemy(new Torch({ 240,330 }, mPlayer));
+	mLevels[5]->AddEnemy(new Torch({ 80,330 }, mPlayer));
+	mLevels[5]->AddEnemy(new Torch({ 560,330 }, mPlayer));
+
+	mLevels[5]->AddEnemy(new Torch({ 430,50 }, mPlayer));
+	mLevels[5]->AddEnemy(new Torch({ 270,50 }, mPlayer));
+
+	mLevels[5]->AddEnemy(new RedBat({ 480,480 }, mPlayer));
+
+	mLevels[5]->AddEnemy(new RedBat({ 580,35 }, mPlayer));
+
+	mLevels[5]->AddEnemy(new Pumpkin({ 320,360 }, mPlayer));
+
+	mLevels[5]->AddEnemy(new Witch({ 320,200 }, mPlayer));
+
+	mLevels[5]->AddEnemy(new Zombie({ 80,190 }, mPlayer));
+	mLevels[5]->AddEnemy(new Zombie({ 560,190 }, mPlayer));
 
 	mLevels[5]->CollidersActive(true);
 
@@ -315,7 +335,7 @@ PlayScreen::PlayScreen() {
 	mLevels[6]->AddWall(new Wall({ 20 ,270 }, 320));
 	mLevels[6]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,270 }, 320));
 
-	mLevels[6]->AddEnemy(new Torch({ 400,500 }, mPlayer));
+	mLevels[6]->AddEnemy(new Torch({ 430,500 }, mPlayer));
 
 	mLevels[6]->CollidersActive(false);
 
