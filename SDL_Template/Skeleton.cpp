@@ -12,10 +12,6 @@ Skeleton::Skeleton(Vector2 pos, Player* player) : Zombie(new AnimatedGLTexture("
 	for (int i = 0; i < MAX_BONES; ++i) {
 		mBones[i] = new Bone();
 	}
-
-	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
-
-	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
 }
 
 Skeleton::~Skeleton() {

@@ -310,8 +310,8 @@ PlayScreen::PlayScreen() {
 
 	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 205 }, 150));
 
-	mLevels[6]->AddPlatform(new Platform({ 60 ,Graphics::SCREEN_HEIGHT - 245 }, 180));
-	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 60 ,Graphics::SCREEN_HEIGHT - 245 }, 180));
+	mLevels[6]->AddPlatform(new Platform({ -30 ,Graphics::SCREEN_HEIGHT - 245 }, 360));
+	mLevels[6]->AddPlatform(new Platform({ 670 ,Graphics::SCREEN_HEIGHT - 245 }, 360));
 
 	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,275}, 150));
 
@@ -323,10 +323,28 @@ PlayScreen::PlayScreen() {
 
 	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,75 }, 150));
 
+	mLevels[6]->AddWall(new Wall({ 20 ,235 }, 300));
+	mLevels[6]->AddWall(new Wall({ 620 ,235 }, 300));
+
 	mLevels[6]->AddWall(new Wall({ 263 ,115 }, 35));
 	mLevels[6]->AddWall(new Wall({ 373 ,115 }, 35));
 
-	mLevels[6]->AddEnemy(new Torch({ 430,500 }, mPlayer));
+	mLevels[6]->AddEnemy(new Torch({ 230,350 }, mPlayer));
+	mLevels[6]->AddEnemy(new Torch({ 410,350 }, mPlayer));
+
+	mLevels[6]->AddEnemy(new Torch({ 230,30 }, mPlayer));
+	mLevels[6]->AddEnemy(new Torch({ 410,30 }, mPlayer));
+
+	mLevels[6]->AddEnemy(new Zombie({ 100,510 }, mPlayer));
+	mLevels[6]->AddEnemy(new Zombie({ 540,510 }, mPlayer));
+
+	mLevels[6]->AddEnemy(new Zombie({ 570,350 }, mPlayer));
+
+	mLevels[6]->AddEnemy(new Skeleton({ 570,200 }, mPlayer));
+
+	mLevels[6]->AddEnemy(new Pumpkin({ 70,200 }, mPlayer));
+
+	mLevels[6]->AddEnemy(new Witch({ 320,40 }, mPlayer));
 
 	mLevels[6]->CollidersActive(true);
 
@@ -382,7 +400,7 @@ PlayScreen::PlayScreen() {
 	mLevels[sTotalLevelCount - 1]->AddWall(new Wall({ 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
 	mLevels[sTotalLevelCount - 1]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
 
-	mLevels[sTotalLevelCount - 1]->AddEnemy(new Torch({ 400,500 }, mPlayer));
+	mLevels[sTotalLevelCount - 1]->AddEnemy(new Mummy({ 400,500 }, mPlayer));
 
 	mLevels[sTotalLevelCount - 1]->CollidersActive(false);
 
