@@ -34,7 +34,7 @@ public:
 	void AddWall(Wall* wall);
 	void AddEnemy(Enemy* enemy);
 
-	bool LevelComplete(); // not using this yet
+	bool LevelComplete();
 
 	void CollidersActive(bool active);
 
@@ -48,9 +48,6 @@ private:
 	std::vector<Wall*> mWalls;
 
 	std::vector<Enemy*> mEnemies;
-
-	static const int MAX_HEARTS = 4;
-	Heart* mHearts[MAX_HEARTS];
 
 	Vector2 mPlayerStart;
 };

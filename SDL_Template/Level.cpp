@@ -7,10 +7,6 @@ Level::Level(std::string texture, Player* player) {
 	mLevelTexture->Parent(this);
 
 	mPlayer = player;
-
-	for (int c = 0; c < MAX_HEARTS; c++) {
-		mHearts[c] = new Heart();
-	}
 }
 
 Level::~Level() {
@@ -37,15 +33,6 @@ Level::~Level() {
 
 void Level::Update() {
 
-	if (InputManager::Instance()->KeyPressed(SDL_SCANCODE_H)) {
-		for (int i = 0; i < MAX_HEARTS; ++i) {
-			if (!mHearts[i]->Active()) {
-				mHearts[i]->Spawn({400,500});
-				break;
-			}
-		}
-	}
-
 	for (auto e : mEnemies) {
 		e->Update();
 	}
@@ -61,10 +48,6 @@ void Level::Render() {
 	}
 	for (int c = 0; c < mEnemies.size(); c++) {
 		mEnemies[c]->Render();
-	}
-
-	for (int c = 0; c < MAX_HEARTS; c++) {
-		mHearts[c]->Render();
 	}
 }
 

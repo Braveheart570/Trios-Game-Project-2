@@ -5,7 +5,7 @@ Mummy::Mummy(Vector2 pos, Player* player) : Zombie(new AnimatedGLTexture("Carpat
 	mPts = 5000;
 
 	mFireTime = 0.0f;
-	mFireInterval = 3.0f;
+	mFireInterval = 2.0f;
 
 	mFacingRight = false;
 

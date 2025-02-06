@@ -22,6 +22,8 @@ Player::Player() {
 	mFiring = false;
 	mFireTime = 0.0f;
 	mFireDur = 0.15f;
+	mBulletYOffset = -65.0f;
+	mBulletYOffsetCrouch = -30.0f;
 
 	mDead = false;
 
@@ -151,7 +153,7 @@ void Player::HandleFiring() {
 	if (mInput->KeyPressed(SDL_SCANCODE_X)) {
 		for (int i = 0; i < MAX_BULLETS; ++i) {
 			if (!mBullets[i]->Active()) {
-				mBullets[i]->Fire(Position()+Vec2_Up* -30, mFacingRight ? Vec2_Right : -Vec2_Right);
+				mBullets[i]->Fire(Position()+Vec2_Up* (mCrouch ? mBulletYOffsetCrouch : mBulletYOffset), mFacingRight ? Vec2_Right : -Vec2_Right);
 				mAudio->PlaySFX("SFX/Throw.wav");
 				mFiring = true;
 				break;
@@ -333,6 +335,11 @@ bool Player::Invulnerable() {
 
 int Player::MaxHeath() {
 	return mMaxHealth;
+}
+
+void Player::UpgradeHealth() {
+	mMaxHealth = 15;
+	mHealth = mMaxHealth;
 }
 
 int Player::Health() {

@@ -34,14 +34,26 @@ void ScreenManager::Update() {
 				mCurrentScreen = Start;
 				delete mPlayScreen;
 				mStartScreen->ResetAnimation();
+				AudioManager::Instance()->PlayMusic("Music/menuMusic.wav");
 				
 			}
 		}
 		else {
 			mPlayScreen->Update();
+			if (mPlayScreen->Win()) {
+				delete mPlayScreen;
+				mCurrentScreen = Win;
+				AudioManager::Instance()->PlayMusic("Music/menuMusic.wav");
+			}
 		}
 		
 		break;
+	case Win:
+		mWinScreen->Update();
+		if (mInput->KeyPressed(SDL_SCANCODE_X)) {
+			mCurrentScreen = Start;
+			mStartScreen->ResetAnimation();
+		}
 	}
 }
 
@@ -53,6 +65,9 @@ void ScreenManager::Render() {
 	case Play:
 		mPlayScreen->Render();
 		break;
+	case Win:
+		mWinScreen->Render();
+		break;
 	}
 }
 
@@ -61,7 +76,10 @@ ScreenManager::ScreenManager() {
 
 	mStartScreen = new StartScreen();
 
+	mWinScreen = new WinScreen();
+
 	mCurrentScreen = Start;
+	AudioManager::Instance()->PlayMusic("Music/menuMusic.wav");
 }
 
 ScreenManager::~ScreenManager() {

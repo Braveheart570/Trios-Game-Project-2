@@ -58,6 +58,12 @@
     <Filter Include="Source Files\Game\Enemies">
       <UniqueIdentifier>{6270d7ae-81ef-42aa-bb73-4a00d4ad5239}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\Screens">
+      <UniqueIdentifier>{05208e4b-4d5b-49ad-9866-732e61ae5f82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\Screens">
+      <UniqueIdentifier>{8b44b7b8-ab35-4b50-9d24-1dbd98d9df6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -72,13 +78,7 @@
     <ClCompile Include="AnimatedTexture.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="StartScreen.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="Scoreboard.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayScreen.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="AssetManager.cpp">
@@ -156,9 +156,6 @@
     <ClCompile Include="Platform.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="Wall.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
@@ -198,6 +195,24 @@
     <ClCompile Include="Skeleton.cpp">
       <Filter>Source Files\Game\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="HeartManager.cpp">
+      <Filter>Source Files\Game\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScreen.cpp">
+      <Filter>Source Files\Game\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="StartScreen.cpp">
+      <Filter>Source Files\Game\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="WinScreen.cpp">
+      <Filter>Source Files\Game\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Source Files\Game\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ScrollingBG.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h">
@@ -209,13 +224,7 @@
     <ClInclude Include="AnimatedTexture.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="StartScreen.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Scoreboard.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayScreen.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="AssetManager.h">
@@ -299,9 +308,6 @@
     <ClInclude Include="Platform.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="Wall.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
@@ -339,6 +345,24 @@
       <Filter>Header Files\Game\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Bone.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="HeartManager.h">
+      <Filter>Header Files\Game\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScreen.h">
+      <Filter>Header Files\Game\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="StartScreen.h">
+      <Filter>Header Files\Game\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="WinScreen.h">
+      <Filter>Header Files\Game\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Header Files\Game\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ScrollingBG.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>

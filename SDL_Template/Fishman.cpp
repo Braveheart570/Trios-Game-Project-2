@@ -16,10 +16,6 @@ Fishman::Fishman(Vector2 pos, Player* player) : Zombie(new AnimatedGLTexture("Ca
 		mBullets[i] = new Bullet(false);
 	}
 
-	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
-
-	mId = PhysicsManager::Instance()->RegisterEntity(this, PhysicsManager::CollisionLayers::Hostile);
-
 }
 
 Fishman::~Fishman() {

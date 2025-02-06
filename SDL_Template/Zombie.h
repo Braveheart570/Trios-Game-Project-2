@@ -14,7 +14,7 @@ public:
 
 protected:
 
-	const int mWanderDist = 100;
+	const int mWanderDist = 60;
 	int nWanderXRight;
 	int mWanderXLeft;
 	bool mFacingRight;

@@ -32,6 +32,8 @@ private:
 	bool mFiring;
 	float mFireTime;
 	float mFireDur;
+	float mBulletYOffset;
+	float mBulletYOffsetCrouch;
 
 	bool mInvulnerable;
 	float mInvulnerableTime;
@@ -82,6 +84,7 @@ public:
 
 	int MaxHeath();
 	int Health();
+	void UpgradeHealth();
 
 	bool Dead();
 };

@@ -4,6 +4,7 @@
 #include "UIBar.h"
 #include "LifeIcon.h"
 #include "Level.h"
+#include "HeartManager.h"
 
 class PlayScreen : public GameEntity {
 
@@ -17,16 +18,34 @@ public:
 
 	bool GameOver();
 
+	bool Win();
+
 private:
 	Timer* mTimer;
 	AudioManager* mAudio;
 
+	HeartManager* mHeartManager;
+
 	Player* mPlayer;
 	Vector2 mPlayerSpawn;
 
+	GLTexture* mControls;
+	GLTexture* MChamberNumLabel;
+
+	bool mStarted;
+	float mIntroTime;
+	float mIntroDur;
+
+	bool mLevelCompleted;
+	float LevelTransitionTime;
+	float LevelTransitionDur;
+	GLTexture* mLevelClearedLabel;
+
 	GLTexture* mGameOverTex;
 
-	static const int sTotalLevelCount = 16;
+	bool mWin;
+
+	static const int sTotalLevelCount = 9;
 	Level* mLevels[sTotalLevelCount];
 	int mLevelIndex;
 
