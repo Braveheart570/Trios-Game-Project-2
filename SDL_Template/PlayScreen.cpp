@@ -33,7 +33,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 4;
+	mLevelIndex = 0;
 
 	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
 	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
@@ -83,7 +83,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[0]->AddEnemy(new Bat({ 450,20 }, mPlayer));
 
-	mLevels[0]->CollidersActive(false);
+	mLevels[0]->CollidersActive(true);
 
 
 
@@ -268,7 +268,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[4]->AddEnemy(new Torch({ 400,500 }, mPlayer));
 
-	mLevels[4]->CollidersActive(true);
+	mLevels[4]->CollidersActive(false);
 
 
 
@@ -404,7 +404,7 @@ void PlayScreen::Render() {
 
 void PlayScreen::NextLevel() {
 
-	if (mLevelIndex = sTotalLevelCount-1) {
+	if (mLevelIndex == sTotalLevelCount-1) {
 		mWin = true;
 		return;
 	}
@@ -422,7 +422,7 @@ void PlayScreen::NextLevel() {
 
 	delete MChamberNumLabel;
 	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
-	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
+	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 20, { 255,204,170 });
 	MChamberNumLabel->Parent(this);
 	MChamberNumLabel->Position(Graphics::SCREEN_WIDTH / 2, 150);
 
