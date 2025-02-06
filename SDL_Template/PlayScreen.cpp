@@ -25,11 +25,6 @@ PlayScreen::PlayScreen() {
 	mControls->Scale(Vec2_One*5.0f);
 	mControls->Position(Graphics::SCREEN_WIDTH/2,Graphics::SCREEN_HEIGHT/2);
 
-	std::string chamberText ="Chamber: " + std::to_string(mLevelIndex + 1);
-	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
-	MChamberNumLabel->Parent(this);
-	MChamberNumLabel->Position(Graphics::SCREEN_WIDTH/2,150);
-
 	mLevelClearedLabel = new GLTexture("Level Cleared", "pico-8-mono-upper.ttf", 25, { 255,204,170 });
 	mLevelClearedLabel->Parent(this);
 	mLevelClearedLabel->Position(Graphics::SCREEN_WIDTH / 2, 150);
@@ -38,7 +33,12 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 3;
+	mLevelIndex = 4;
+
+	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
+	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
+	MChamberNumLabel->Parent(this);
+	MChamberNumLabel->Position(Graphics::SCREEN_WIDTH / 2, 150);
 
 	mLevels[0] = new Level("lvl1.png", mPlayer);
 	mLevels[0]->Parent(this);
@@ -231,7 +231,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[3]->AddEnemy(new Bat({ 300,120 }, mPlayer));
 
-	mLevels[3]->CollidersActive(true);
+	mLevels[3]->CollidersActive(false);
 
 
 
@@ -268,7 +268,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[4]->AddEnemy(new Torch({ 400,500 }, mPlayer));
 
-	mLevels[4]->CollidersActive(false);
+	mLevels[4]->CollidersActive(true);
 
 
 
