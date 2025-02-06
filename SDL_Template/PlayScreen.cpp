@@ -38,7 +38,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 2;
+	mLevelIndex = 3;
 
 	mLevels[0] = new Level("lvl1.png", mPlayer);
 	mLevels[0]->Parent(this);
@@ -179,7 +179,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[2]->AddEnemy(new Bat({ 430,20 }, mPlayer, false));
 
-	mLevels[2]->CollidersActive(true);
+	mLevels[2]->CollidersActive(false);
 
 
 
@@ -207,9 +207,31 @@ PlayScreen::PlayScreen() {
 	mLevels[3]->AddWall(new Wall({ 20,265 }, 320));
 	mLevels[3]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20,265 }, 320));
 
-	mLevels[3]->AddEnemy(new Torch({ 400,500 }, mPlayer));
+	mLevels[3]->AddEnemy(new Torch({ 160,500 }, mPlayer));
+	mLevels[3]->AddEnemy(new Torch({ 480,500 }, mPlayer));
 
-	mLevels[3]->CollidersActive(false);
+	mLevels[3]->AddEnemy(new Torch({ 80,340 }, mPlayer));
+	mLevels[3]->AddEnemy(new Torch({ 560,340 }, mPlayer));
+
+	mLevels[3]->AddEnemy(new Torch({ 80,180 }, mPlayer));
+	mLevels[3]->AddEnemy(new Torch({ 560,180 }, mPlayer));
+
+	mLevels[3]->AddEnemy(new Torch({ 80,20 }, mPlayer));
+	mLevels[3]->AddEnemy(new Torch({ 560,20 }, mPlayer));
+
+	mLevels[3]->AddEnemy(new Fishman({ 320,350 }, mPlayer));
+
+	mLevels[3]->AddEnemy(new Fishman({ 290,190 }, mPlayer));
+	mLevels[3]->AddEnemy(new Fishman({ 450,190 }, mPlayer));
+
+	mLevels[3]->AddEnemy(new Fishman({ 320,30 }, mPlayer));
+
+	mLevels[3]->AddEnemy(new Bat({ 140,300 }, mPlayer, false));
+	mLevels[3]->AddEnemy(new Bat({ 500,300 }, mPlayer));
+
+	mLevels[3]->AddEnemy(new Bat({ 300,120 }, mPlayer));
+
+	mLevels[3]->CollidersActive(true);
 
 
 
