@@ -33,7 +33,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 7;
+	mLevelIndex = 0;
 
 	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
 	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
@@ -83,7 +83,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[0]->AddEnemy(new Bat({ 450,20 }, mPlayer));
 
-	mLevels[0]->CollidersActive(false);
+	mLevels[0]->CollidersActive(true);
 
 
 
@@ -252,7 +252,17 @@ PlayScreen::PlayScreen() {
 	mLevels[4]->AddWall(new Wall({ 20 ,270 }, 320));
 	mLevels[4]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,270 }, 320));
 
-	mLevels[4]->AddEnemy(new Torch({ 400,500 }, mPlayer));
+	mLevels[4]->AddEnemy(new Torch({ 100,500 }, mPlayer));
+	mLevels[4]->AddEnemy(new Torch({ 540,500 }, mPlayer));
+
+	mLevels[4]->AddEnemy(new Torch({ 100,150 }, mPlayer));
+	mLevels[4]->AddEnemy(new Torch({ 540,150 }, mPlayer));
+
+	mLevels[4]->AddEnemy(new Mummy({ 450,490 }, mPlayer));
+
+	mLevels[4]->AddEnemy(new Mummy({ 70,330 }, mPlayer));
+
+	mLevels[4]->AddEnemy(new Mummy({ 320,170 }, mPlayer));
 
 	mLevels[4]->CollidersActive(false);
 
@@ -394,7 +404,7 @@ PlayScreen::PlayScreen() {
 	mLevels[7]->AddEnemy(new Witch({ 210,40 }, mPlayer));
 	mLevels[7]->AddEnemy(new Witch({ 430,40 }, mPlayer));
 
-	mLevels[7]->CollidersActive(true);
+	mLevels[7]->CollidersActive(false);
 
 
 
@@ -411,7 +421,7 @@ PlayScreen::PlayScreen() {
 	mLevels[sTotalLevelCount - 1]->AddWall(new Wall({ 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
 	mLevels[sTotalLevelCount - 1]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_HEIGHT));
 
-	mLevels[sTotalLevelCount - 1]->AddEnemy(new Mummy({ 400,500 }, mPlayer));
+	mLevels[sTotalLevelCount - 1]->AddEnemy(new Boss({ 450,260 }, mPlayer));
 
 	mLevels[sTotalLevelCount - 1]->CollidersActive(false);
 

@@ -1,17 +1,17 @@
 #include "Boss.h"
 
-Boss::Boss(Vector2 pos, Player* player) : Enemy(new GLTexture("CarpathianSprites.png",84,17,23,32), player, 10000, 30, false) { // health brought down to 30 for testing
+Boss::Boss(Vector2 pos, Player* player) : Enemy(new GLTexture("CarpathianSprites.png",84,17,23,32), player, 10000, 70, false) { // health brought down to 30 for testing
 
 	for (int i = 0; i < MAX_BULLETS; ++i) {
 		mBullets[i] = new Bullet(false);
 	}
 
 	mMoving = true;
-	mSpeed = 50.0f;
+	mSpeed = 65.0f;
 
 	mFireTime = 0.0f;
-	mFireIntervalSingle = 3.0f;
-	mFireIntervalRing = 1.5f;
+	mFireIntervalSingle = 2.0f;
+	mFireIntervalRing = 1.25f;
 
 	mFiring = false;
 	mFireTexTime = 0.0f;

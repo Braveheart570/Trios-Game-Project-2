@@ -22,7 +22,7 @@ Player::Player() {
 	mFiring = false;
 	mFireTime = 0.0f;
 	mFireDur = 0.15f;
-	mBulletYOffset = -50.0f;
+	mBulletYOffset = -65.0f;
 	mBulletYOffsetCrouch = -30.0f;
 
 	mDead = false;

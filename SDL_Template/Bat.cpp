@@ -8,7 +8,7 @@ Bat::Bat(Vector2 pos, Player* player, bool left) : Enemy(new AnimatedGLTexture("
 
 	mYTrigger = 200;
 	mTrackingPlayer = false;
-	mPlayerOriginOffset = -30;
+	mPlayerOriginOffset = -60;
 
 	AddCollider(new BoxCollider(mTexture->ScaledDimensions()));
 
