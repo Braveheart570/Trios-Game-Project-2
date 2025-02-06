@@ -33,7 +33,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 6;
+	mLevelIndex = 7;
 
 	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
 	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
@@ -346,7 +346,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[6]->AddEnemy(new Witch({ 320,40 }, mPlayer));
 
-	mLevels[6]->CollidersActive(true);
+	mLevels[6]->CollidersActive(false);
 
 
 
@@ -381,9 +381,20 @@ PlayScreen::PlayScreen() {
 	mLevels[7]->AddWall(new Wall({ 20 ,270 }, 320));
 	mLevels[7]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 20 ,270 }, 320));
 
-	mLevels[7]->AddEnemy(new Torch({ 430,500 }, mPlayer));
+	mLevels[7]->AddEnemy(new RedBat({ 530,460 }, mPlayer));
 
-	mLevels[7]->CollidersActive(false);
+	mLevels[7]->AddEnemy(new Zombie({ 40,350 }, mPlayer));
+	mLevels[7]->AddEnemy(new Zombie({ 600,350 }, mPlayer));
+
+	mLevels[7]->AddEnemy(new Pumpkin({ 320,200 }, mPlayer));
+
+	mLevels[7]->AddEnemy(new Skeleton({ 90,190 }, mPlayer));
+	mLevels[7]->AddEnemy(new Skeleton({ 550,190 }, mPlayer));
+
+	mLevels[7]->AddEnemy(new Witch({ 210,40 }, mPlayer));
+	mLevels[7]->AddEnemy(new Witch({ 430,40 }, mPlayer));
+
+	mLevels[7]->CollidersActive(true);
 
 
 
