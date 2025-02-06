@@ -35,7 +35,7 @@ void Enemy::Hit(PhysEntity* other) {
 			mPlayer->AddScore(mPts);
 			AudioManager::Instance()->PlaySFX("SFX/Kill.wav");
 
-			if (Random::Instance()->RandomFloat() * 100 <= 50) {
+			if (Random::Instance()->RandomFloat() * 100 <= 20) {
 				HeartManager::Instance()->SpawnHeart(Position());
 			}
 
