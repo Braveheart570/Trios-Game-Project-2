@@ -41,7 +41,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 9;
+	mLevelIndex = 10;
 
 	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
 	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
@@ -96,6 +96,7 @@ PlayScreen::PlayScreen() {
 
 
 	mLevels[1] = new Level("lvl2.png", mPlayer);
+	mLevels[1]->Parent(this);
 
 	mLevels[1]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
@@ -137,6 +138,7 @@ PlayScreen::PlayScreen() {
 
 
 	mLevels[2] = new Level("lvl3.png", mPlayer);
+	mLevels[2]->Parent(this);
 
 	mLevels[2]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
@@ -192,6 +194,7 @@ PlayScreen::PlayScreen() {
 
 
 	mLevels[3] = new Level("lvl4.png", mPlayer);
+	mLevels[3]->Parent(this);
 
 	mLevels[3]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
@@ -244,6 +247,7 @@ PlayScreen::PlayScreen() {
 
 
 	mLevels[4] = new Level("lvl8.png", mPlayer);
+	mLevels[4]->Parent(this);
 
 	mLevels[4]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
@@ -277,6 +281,7 @@ PlayScreen::PlayScreen() {
 
 
 	mLevels[5] = new Level("Lvl9.png", mPlayer);
+	mLevels[5]->Parent(this);
 
 	mLevels[5]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
@@ -323,6 +328,7 @@ PlayScreen::PlayScreen() {
 
 
 	mLevels[6] = new Level("Lvl10.png", mPlayer);
+	mLevels[6]->Parent(this);
 
 	mLevels[6]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
@@ -369,6 +375,7 @@ PlayScreen::PlayScreen() {
 
 
 	mLevels[7] = new Level("lvl11.png", mPlayer);
+	mLevels[7]->Parent(this);
 
 	mLevels[7]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
@@ -417,6 +424,7 @@ PlayScreen::PlayScreen() {
 
 
 	mLevels[8] = new Level("lvl5.png",mPlayer);
+	mLevels[8]->Parent(this);
 
 	mLevels[8]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
@@ -472,6 +480,7 @@ PlayScreen::PlayScreen() {
 
 
 	mLevels[9] = new Level("lvl6.png", mPlayer);
+	mLevels[9]->Parent(this);
 
 	mLevels[9]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
@@ -518,11 +527,66 @@ PlayScreen::PlayScreen() {
 	mLevels[9]->AddEnemy(new Bat({ 380,10 }, mPlayer, false));
 	mLevels[9]->AddEnemy(new Bat({ 550,10 }, mPlayer));
 
-	mLevels[9]->CollidersActive(true);
+	mLevels[9]->CollidersActive(false);
+
+
+
+	mLevels[10] = new Level("lvl7.png", mPlayer);
+	mLevels[10]->Parent(this);
+
+	mLevels[10]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
+
+	mLevels[10]->AddPlatform(new Platform({ 170 ,395 }, 600));
+	mLevels[10]->AddPlatform(new Platform({ 640 ,395 }, 80));
+
+	mLevels[10]->AddPlatform(new Platform({ 470 ,235 }, 600));
+
+	mLevels[10]->AddPlatform(new Platform({ 170 ,75 }, 600));
+
+	mLevels[10]->AddWall(new Wall({ 17 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+	mLevels[10]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 17 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+
+	mLevels[10]->AddWall(new Wall({ 17 ,270}, 320));
+	mLevels[10]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 17 ,270 }, 320));
+
+	mLevels[10]->AddEnemy(new Torch({ 160,490 }, mPlayer));
+	mLevels[10]->AddEnemy(new Torch({ 480,490 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Torch({ 210,310 }, mPlayer));
+	mLevels[10]->AddEnemy(new Torch({ 430,310 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Torch({ 160,170 }, mPlayer));
+	mLevels[10]->AddEnemy(new Torch({ 480,170 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Torch({ 210,30 }, mPlayer));
+	mLevels[10]->AddEnemy(new Torch({ 430,30 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Zombie({ 130,510 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Zombie({ 400,350 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Zombie({ 400,190 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Zombie({ 400,30 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Skeleton({ 130,350 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Skeleton({ 590,190 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Skeleton({ 170,30 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Bat({ 550,460 }, mPlayer));
+
+	mLevels[10]->AddEnemy(new Bat({ 70,150 }, mPlayer, false));
+
+	mLevels[10]->AddEnemy(new Bat({ 550,10 }, mPlayer));
+
+	mLevels[10]->CollidersActive(true);
 
 
 
 	mLevels[sTotalLevelCount - 1] = new Level("lvl16.png", mPlayer);
+	mLevels[sTotalLevelCount - 1]->Parent(this);
 
 	mLevels[sTotalLevelCount - 1]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
 
