@@ -41,7 +41,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 10;
+	mLevelIndex = 11;
 
 	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
 	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
@@ -581,7 +581,59 @@ PlayScreen::PlayScreen() {
 
 	mLevels[10]->AddEnemy(new Bat({ 550,10 }, mPlayer));
 
-	mLevels[10]->CollidersActive(true);
+	mLevels[10]->CollidersActive(false);
+
+
+
+	mLevels[11] = new Level("lvl12.png", mPlayer);
+
+	mLevels[11]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
+
+	mLevels[11]->AddPlatform(new Platform({ 5 ,395 }, 200));
+	mLevels[11]->AddPlatform(new Platform({ 635 ,395 }, 200));
+	mLevels[11]->AddPlatform(new Platform({ 240 ,395 }, 70));
+	mLevels[11]->AddPlatform(new Platform({ 400 ,395 }, 70));
+
+	mLevels[11]->AddPlatform(new Platform({ 320 ,235 }, 220));
+
+	mLevels[11]->AddPlatform(new Platform({ 5 ,155 }, 200));
+	mLevels[11]->AddPlatform(new Platform({ 635 ,155 }, 200));
+
+	mLevels[11]->AddPlatform(new Platform({ 320 ,75 }, 220));
+
+	mLevels[11]->AddWall(new Wall({ 17 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+	mLevels[11]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 17 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+	mLevels[11]->AddWall(new Wall({ 220 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+	mLevels[11]->AddWall(new Wall({ 420 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+
+	mLevels[11]->AddWall(new Wall({ 17 ,270 }, 320));
+	mLevels[11]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 17 ,270 }, 320));
+
+	mLevels[11]->AddEnemy(new Torch({ 240,330 }, mPlayer));
+	mLevels[11]->AddEnemy(new Torch({ 400,330 }, mPlayer));
+
+	mLevels[11]->AddEnemy(new Torch({ 100,30 }, mPlayer));
+	mLevels[11]->AddEnemy(new Torch({ 540,30 }, mPlayer));
+
+	mLevels[11]->AddEnemy(new Pumpkin({ 80,520 }, mPlayer));
+
+	mLevels[11]->AddEnemy(new Pumpkin({ 600,360 }, mPlayer));
+
+	mLevels[11]->AddEnemy(new Pumpkin({ 230,200 }, mPlayer));
+
+	mLevels[11]->AddEnemy(new Pumpkin({ 410,40 }, mPlayer));
+
+	mLevels[11]->AddEnemy(new Fishman({ 560,510 }, mPlayer));
+
+	mLevels[11]->AddEnemy(new Fishman({ 410,190 }, mPlayer));
+
+	mLevels[11]->AddEnemy(new Fishman({ 300,40 }, mPlayer));
+
+	mLevels[11]->AddEnemy(new RedBat({ 140,310 }, mPlayer));
+
+	mLevels[11]->AddEnemy(new RedBat({ 470,10 }, mPlayer));
+
+	mLevels[11]->CollidersActive(true);
 
 
 
