@@ -41,6 +41,11 @@ private:
 	float LevelTransitionDur;
 	GLTexture* mLevelClearedLabel;
 
+	bool mHealthLabelUp;
+	float mHealthUpLabelTime;
+	float mHealthUpLabelDur;
+	GLTexture* mHealthUpgradedlabel;
+
 	GLTexture* mGameOverTex;
 
 	bool mWin;
