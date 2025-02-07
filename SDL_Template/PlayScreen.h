@@ -50,7 +50,7 @@ private:
 
 	bool mWin;
 
-	static const int sTotalLevelCount = 13;
+	static const int sTotalLevelCount = 14;
 	Level* mLevels[sTotalLevelCount];
 	int mLevelIndex;
 
