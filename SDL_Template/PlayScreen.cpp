@@ -41,7 +41,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 8;
+	mLevelIndex = 9;
 
 	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
 	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
@@ -467,7 +467,58 @@ PlayScreen::PlayScreen() {
 
 	mLevels[8]->AddEnemy(new Bat({ 480,40 }, mPlayer));
 
-	mLevels[8]->CollidersActive(true);
+	mLevels[8]->CollidersActive(false);
+
+
+
+	mLevels[9] = new Level("lvl6.png", mPlayer);
+
+	mLevels[9]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
+
+	mLevels[9]->AddPlatform(new Platform({ 60 ,517 }, 190));
+	mLevels[9]->AddPlatform(new Platform({ 580 ,517 }, 190));
+
+	mLevels[9]->AddPlatform(new Platform({ -60 ,397 }, 190));
+	mLevels[9]->AddPlatform(new Platform({ 700 ,397 }, 190));
+	mLevels[9]->AddPlatform(new Platform({ 320 ,397 }, 230));
+
+	mLevels[9]->AddPlatform(new Platform({ 60 ,235 }, 190));
+	mLevels[9]->AddPlatform(new Platform({ 580 ,235 }, 190));
+	mLevels[9]->AddPlatform(new Platform({ 320 ,235 }, 130));
+
+	mLevels[9]->AddWall(new Wall({ 17 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+	mLevels[9]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 17 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+
+	mLevels[9]->AddWall(new Wall({ 140 ,Graphics::SCREEN_HEIGHT - 85 }, 30));
+	mLevels[9]->AddWall(new Wall({ 500 ,Graphics::SCREEN_HEIGHT - 85 }, 30));
+
+	mLevels[9]->AddWall(new Wall({ 17 ,240 }, 250));
+	mLevels[9]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 17 ,240 }, 250));
+
+	mLevels[9]->AddEnemy(new Torch({ 140,490 }, mPlayer));
+	mLevels[9]->AddEnemy(new Torch({ 500,490 }, mPlayer));
+
+	mLevels[9]->AddEnemy(new Fishman({ 210,510 }, mPlayer));
+	mLevels[9]->AddEnemy(new Fishman({ 580,480 }, mPlayer));
+
+	mLevels[9]->AddEnemy(new Torch({ 320,340 }, mPlayer));
+
+	mLevels[9]->AddEnemy(new Skeleton({ 260,350 },mPlayer));
+	mLevels[9]->AddEnemy(new Skeleton({ 380,350 }, mPlayer));
+
+	mLevels[9]->AddEnemy(new Bat({ 120,290 }, mPlayer));
+
+	mLevels[9]->AddEnemy(new Fishman({ 60,190 }, mPlayer));
+	mLevels[9]->AddEnemy(new Fishman({ 580,190 }, mPlayer));
+
+	mLevels[9]->AddEnemy(new Bat({ 200,130 }, mPlayer, false));
+	mLevels[9]->AddEnemy(new Bat({ 440,130 }, mPlayer));
+
+	mLevels[9]->AddEnemy(new Bat({ 100,10 }, mPlayer, false));
+	mLevels[9]->AddEnemy(new Bat({ 380,10 }, mPlayer, false));
+	mLevels[9]->AddEnemy(new Bat({ 550,10 }, mPlayer));
+
+	mLevels[9]->CollidersActive(true);
 
 
 
