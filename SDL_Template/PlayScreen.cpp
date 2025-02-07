@@ -15,6 +15,14 @@ PlayScreen::PlayScreen() {
 	mUIBar = new UIBar(mPlayer);
 	mUIBar->Parent(this);
 
+	mHealthLabelUp = false;
+	mHealthUpLabelTime = 0.0f;
+	mHealthUpLabelDur = 3.0f;
+	mHealthUpgradedlabel = new GLTexture("HEALTH UPGRADED!", "pico-8-mono-upper.ttf", 25, { 255,204,170 });
+	mHealthUpgradedlabel->Parent(this);
+	mHealthUpgradedlabel->Position(320, 320);
+
+
 	mGameOverTex = new GLTexture("GameOver.png");
 	mGameOverTex->Parent(this);
 	mGameOverTex->Scale(Vec2_One*5.0f);
@@ -33,7 +41,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 0;
+	mLevelIndex = 4;
 
 	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
 	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
@@ -83,7 +91,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[0]->AddEnemy(new Bat({ 450,20 }, mPlayer));
 
-	mLevels[0]->CollidersActive(true);
+	mLevels[0]->CollidersActive(false);
 
 
 
@@ -264,7 +272,7 @@ PlayScreen::PlayScreen() {
 
 	mLevels[4]->AddEnemy(new Mummy({ 320,170 }, mPlayer));
 
-	mLevels[4]->CollidersActive(false);
+	mLevels[4]->CollidersActive(true);
 
 
 
@@ -480,6 +488,14 @@ void PlayScreen::Update() {
 		mUIBar->Update();
 		mHeartManager->Update();
 
+		if (mHealthLabelUp) {
+			mHealthUpLabelTime += mTimer->DeltaTime();
+			if (mHealthUpLabelTime >= mHealthUpLabelDur) {
+				mHealthLabelUp = false;
+				mHealthUpLabelTime = 0.0f;
+			}
+		}
+
 
 	}
 	else {
@@ -513,6 +529,8 @@ void PlayScreen::Render() {
 		mLevelClearedLabel->Render();
 	}
 
+	if (mHealthLabelUp) mHealthUpgradedlabel->Render();
+
 }
 
 void PlayScreen::NextLevel() {
@@ -524,6 +542,7 @@ void PlayScreen::NextLevel() {
 
 	if (mLevelIndex == 4) {
 		mPlayer->UpgradeHealth();
+		mHealthLabelUp = true;
 	}
 
 	mLevels[mLevelIndex]->CollidersActive(false);
