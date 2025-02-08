@@ -41,7 +41,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 12;
+	mLevelIndex = 13;
 
 	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
 	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
@@ -684,7 +684,52 @@ PlayScreen::PlayScreen() {
 
 	mLevels[12]->AddEnemy(new Pumpkin({ 60,40 }, mPlayer));
 
-	mLevels[12]->CollidersActive(true);
+	mLevels[12]->CollidersActive(false);
+
+
+
+	mLevels[13] = new Level("lvl14.png", mPlayer);
+	mLevels[13]->Parent(this);
+
+	mLevels[13]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
+
+	mLevels[13]->AddPlatform(new Platform({ 60 ,Graphics::SCREEN_HEIGHT - 245 }, 245));
+	mLevels[13]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH - 60 ,Graphics::SCREEN_HEIGHT - 245 }, 245));
+
+	mLevels[13]->AddPlatform(new Platform({ 320 ,235 }, 290));
+
+	mLevels[13]->AddPlatform(new Platform({ 320 ,75 }, 230));
+
+	mLevels[13]->AddWall(new Wall({ 17 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+	mLevels[13]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 17 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+
+	mLevels[13]->AddWall(new Wall({ 180 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+	mLevels[13]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 180 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+
+	mLevels[13]->AddWall(new Wall({ 17 ,260 }, 320));
+	mLevels[13]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 17 ,260 }, 320));
+
+	mLevels[13]->AddEnemy(new Torch({ 250,320 }, mPlayer));
+	mLevels[13]->AddEnemy(new Torch({ 390,320 }, mPlayer));
+
+	mLevels[13]->AddEnemy(new Torch({ 250,40 }, mPlayer));
+	mLevels[13]->AddEnemy(new Torch({ 390,40 }, mPlayer));
+
+	mLevels[13]->AddEnemy(new Witch({ 100,355 }, mPlayer));
+	mLevels[13]->AddEnemy(new Witch({ 540,355 }, mPlayer));
+
+	mLevels[13]->AddEnemy(new Witch({ 320,40 }, mPlayer));
+
+	mLevels[13]->AddEnemy(new RedBat({ 100,470 }, mPlayer));
+	mLevels[13]->AddEnemy(new RedBat({ 540,470 }, mPlayer));
+
+	mLevels[13]->AddEnemy(new RedBat({ 60,180 }, mPlayer, false));
+	mLevels[13]->AddEnemy(new RedBat({ 500,180 }, mPlayer));
+
+	mLevels[13]->AddEnemy(new RedBat({ 100,30 }, mPlayer, false));
+	mLevels[13]->AddEnemy(new RedBat({ 540,30 }, mPlayer, false));
+
+	mLevels[13]->CollidersActive(true);
 
 
 
