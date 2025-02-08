@@ -33,7 +33,7 @@ PlayScreen::PlayScreen() {
 	mControls->Scale(Vec2_One*5.0f);
 	mControls->Position(Graphics::SCREEN_WIDTH/2,Graphics::SCREEN_HEIGHT/2);
 
-	mLevelClearedLabel = new GLTexture("Level Cleared", "pico-8-mono-upper.ttf", 25, { 255,204,170 });
+	mLevelClearedLabel = new GLTexture("Chamber Cleared", "pico-8-mono-upper.ttf", 25, { 255,204,170 });
 	mLevelClearedLabel->Parent(this);
 	mLevelClearedLabel->Position(Graphics::SCREEN_WIDTH / 2, 150);
 
