@@ -88,9 +88,9 @@ bool PhysEntity::CheckCollision(PhysEntity * other) {
 }
 
 void PhysEntity::Render() {
-	for (auto c : mColliders) {
+	/*for (auto c : mColliders) {
 		c->Render();
-	}
+	}*/
 
 	if (mBroadPhaseCollider) {
 		//mBroadPhaseCollider->Render();
