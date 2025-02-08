@@ -2,7 +2,7 @@
 
 Heart::Heart() {
 
-	mtexture = new GLTexture("CarpathianSprites.png",33,35,7,6);
+	mtexture = new AnimatedGLTexture("CarpathianSprites.png",33,35,8,6,2,0.5f,Animation::Layouts::Horizontal);
 	mtexture->Parent(this);
 	mtexture->Scale(Vec2_One * 5.0f);
 
@@ -28,7 +28,12 @@ void Heart::Spawn(Vector2 pos) {
 void Heart::Render() {
 	if (Active()) {
 		mtexture->Render();
+		PhysEntity::Render();
 	}
+}
+
+void Heart::Update() {
+	mtexture->Update();
 }
 
 void Heart::Hit(PhysEntity* other) {
