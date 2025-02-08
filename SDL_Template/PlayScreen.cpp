@@ -28,7 +28,7 @@ PlayScreen::PlayScreen() {
 	mGameOverTex->Scale(Vec2_One*5.0f);
 	mGameOverTex->Position(Graphics::SCREEN_WIDTH/2,Graphics::SCREEN_HEIGHT/2);
 
-	mControls = new GLTexture("Controls2.png");
+	mControls = new GLTexture("Controls.png");
 	mControls->Parent(this);
 	mControls->Scale(Vec2_One*5.0f);
 	mControls->Position(Graphics::SCREEN_WIDTH/2,Graphics::SCREEN_HEIGHT/2);
@@ -914,9 +914,10 @@ void PlayScreen::NextLevel() {
 	mLevels[mLevelIndex]->CollidersActive(true);
 	mPlayer->Position(mPlayerSpawn);
 
-	if (mLevelIndex == 7) {
+	if (mLevelIndex == 8) {
 		mPlayer->UpgradeHealth();
 		mHealthLabelUp = true;
+		mAudio->PlaySFX("SFX/StartSound.wav");
 	}
 
 	mHeartManager->ClearHearts();
