@@ -41,7 +41,7 @@ PlayScreen::PlayScreen() {
 	LevelTransitionTime = 0.0f;
 	LevelTransitionDur = 2.5f;
 
-	mLevelIndex = 13;
+	mLevelIndex = 14;
 
 	std::string chamberText = "Chamber: " + std::to_string(mLevelIndex + 1);
 	MChamberNumLabel = new GLTexture(chamberText, "pico-8-mono-upper.ttf", 25, { 255,204,170 });
@@ -729,7 +729,56 @@ PlayScreen::PlayScreen() {
 	mLevels[13]->AddEnemy(new RedBat({ 100,30 }, mPlayer, false));
 	mLevels[13]->AddEnemy(new RedBat({ 540,30 }, mPlayer, false));
 
-	mLevels[13]->CollidersActive(true);
+	mLevels[13]->CollidersActive(false);
+
+
+
+	mLevels[14] = new Level("lvl15.png", mPlayer);
+	mLevels[14]->Parent(this);
+
+	mLevels[14]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH / 2 ,Graphics::SCREEN_HEIGHT - 85 }, Graphics::SCREEN_WIDTH + 400));
+
+	mLevels[14]->AddPlatform(new Platform({ 0 ,Graphics::SCREEN_HEIGHT - 245 }, 200));
+	mLevels[14]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH ,Graphics::SCREEN_HEIGHT - 245 }, 200));
+	mLevels[14]->AddPlatform(new Platform({ 320 ,Graphics::SCREEN_HEIGHT - 245 }, 140));
+
+	mLevels[14]->AddPlatform(new Platform({ 0 ,235 }, 300));
+	mLevels[14]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH ,235 }, 300));
+
+	mLevels[14]->AddPlatform(new Platform({ 0 ,75 }, 300));
+	mLevels[14]->AddPlatform(new Platform({ Graphics::SCREEN_WIDTH ,75 }, 300));
+	mLevels[14]->AddPlatform(new Platform({ 320 ,75 }, 140));
+
+	mLevels[14]->AddWall(new Wall({ 17 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+	mLevels[14]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 17 ,Graphics::SCREEN_HEIGHT - 85 }, 150));
+
+	mLevels[14]->AddWall(new Wall({ 100 ,Graphics::SCREEN_HEIGHT - 245 }, 150));
+	mLevels[14]->AddWall(new Wall({ 540 ,Graphics::SCREEN_HEIGHT - 245 }, 150));
+
+	mLevels[14]->AddWall(new Wall({ 17 ,235 }, 320));
+	mLevels[14]->AddWall(new Wall({ Graphics::SCREEN_WIDTH - 17 ,235 }, 320));
+
+	mLevels[14]->AddEnemy(new Torch({ 180,330 }, mPlayer));
+	mLevels[14]->AddEnemy(new Torch({ 460,330 }, mPlayer));
+
+	mLevels[14]->AddEnemy(new Witch({ 80,520 }, mPlayer));
+	mLevels[14]->AddEnemy(new Witch({ 560,520 }, mPlayer));
+
+	mLevels[14]->AddEnemy(new Witch({ 320,40 }, mPlayer));
+
+	mLevels[14]->AddEnemy(new Pumpkin({ 320,360 }, mPlayer));
+
+	mLevels[14]->AddEnemy(new Zombie({ 100,200 }, mPlayer));
+	mLevels[14]->AddEnemy(new Zombie({ 540,200 }, mPlayer));
+
+	mLevels[14]->AddEnemy(new Skeleton({ 100,30 }, mPlayer));
+	mLevels[14]->AddEnemy(new Skeleton({ 540,30 }, mPlayer));
+
+	mLevels[14]->AddEnemy(new RedBat({ 140,140 }, mPlayer, false));
+
+	mLevels[14]->AddEnemy(new RedBat({ 450,10 }, mPlayer));
+
+	mLevels[14]->CollidersActive(true);
 
 
 
