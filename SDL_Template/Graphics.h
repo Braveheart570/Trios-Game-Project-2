@@ -28,7 +28,7 @@ namespace SDLFramework {
 
 		static const short SCREEN_WIDTH = 640;
 		static const short SCREEN_HEIGHT = 640;
-		const char* WINDOW_TITLE = "Game";
+		const char* WINDOW_TITLE = "The Carpathian";
 
 	protected:
 		static Graphics* sInstance;

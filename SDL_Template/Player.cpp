@@ -108,7 +108,7 @@ void Player::HandleMovement() {
 		mVelocity += -Vec2_Right * mMoveSpeed * mTimer->DeltaTime();
 	}
 
-	if (mInput->KeyDown(SDL_SCANCODE_C) && mGrounded && !mCrouch) {
+	if (mInput->KeyDown(SDL_SCANCODE_Z) && mGrounded && !mCrouch) {
 
 		mAudio->PlaySFX("SFX/Jump.wav");
 		mVelocity.y -= mJumpStrength;
